@@ -27,7 +27,7 @@ class dozentenplan extends StudIPPlugin implements SystemPlugin {
 
     }
 
-    public function show_action() {
+    public function show() {
 
         if (Request::option('user_id')) {
             $stundenplan = new CalendarView();
