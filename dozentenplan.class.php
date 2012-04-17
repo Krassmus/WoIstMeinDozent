@@ -5,7 +5,13 @@
  * Time: 09:25
  * Was macht die Klasse:
  */
- require_once 'lib/calendar/CalendarView.class.php';
+//require_once 'app/controllers/authenticated_controller.php';
+require_once 'app/models/calendar/schedule.php';
+require_once 'lib/calendar/CalendarColumn.class.php';
+require_once 'lib/calendar/CalendarWeekView.class.php';
+require_once 'lib/classes/SemesterData.class.php';
+require_once('plugins_packages/neo/neoprint/classes/hfwu.php');
+require_once('plugins_packages/neo/neoprint/classes/terminplan.php');
 
 class dozentenplan extends StudIPPlugin implements SystemPlugin {
 
@@ -16,48 +22,88 @@ class dozentenplan extends StudIPPlugin implements SystemPlugin {
             array('src' => $this->getPluginURL()."/js.js"),
             "");
         //Navigationselement AutoNavigation 
-        $navigation = new AutoNavigation(get_class($this), PluginEngine::getURL($this, array(), "show_action"));
+        $navigation = new AutoNavigation("Wo ist der Dozent", PluginEngine::getURL($this, array(), "show"));
         //Punkt an dem das Elements eingesetzt werden soll
         Navigation::addItem('/start/'.get_class($this), $navigation);
-        // Wichtig das Element clonen sonst kann es zu einer Schleife kommen -> nur bei AutoNavigation
-        Navigation::addItem('/'.get_class($this), clone $navigation);
-        Navigation::addItem('/'.get_class($this).'/show', clone $navigation);
-        Navigation::addItem('/'.get_class($this).'/show/show2', clone $navigation);
+        //Wichtig das Element clonen sonst kann es zu einer Schleife kommen -> nur bei AutoNavigation
+        //Navigation::addItem('/'.get_class($this), clone $navigation);
 
 
     }
 
-    public function show() {
 
-        if (Request::option('user_id')) {
-            $stundenplan = new CalendarView();
-            $stundenplan->addColumn(get_fullname(Request::get('user_id')));
-            $db = DBManager::get();
-            $termine = $db->query(
-                "SELECT seminar_cycle_dates.*, seminare.Name " .
-                "FROM seminar_user " .
-                    "INNER JOIN seminar_cycle_dates ON (seminar_cycle_dates.Seminar_id = seminar_user.Seminar_id) " .
-                    "INNER JOIN seminare ON (seminare.Seminar_id = seminar_user.Seminar_id) " .
-                "WHERE seminar_user.user_id = ".$db->quote(Request::get("user_id"))." " .
-                    "AND seminar_cycle_dates.weekday = ".$db->quote(date("N"))." " .
-            "")->fetchAll(PDO::FETCH_ASSOC);
+    public function show_action() {
+        $plan = array();
 
-            foreach ($termine as $termin) {
-                $stundenplan->addEntry(array(
-                    'id' => md5(uniqid()),
-                    'color' => "#5C2D64",
-                    'start' => substr(str_replace(":", "", $termin['start_time']), 0, 4),
-                    'end'   => substr(str_replace(":", "", $termin['end_time']), 0, 4),
-                    'title' => $termin['Name'],
-                    'content' => $termin['description']
-                ));
-            }
+        if(!empty($_REQUEST["user_id"])) {
+            $terminplanner = new terminplan();
+            if(empty($_REQUEST["i"])) $i=0; //Vorlauf 0 = diese Woche / 1 = nächste Woche usw...
+            else $i = $_REQUEST["i"];
+            $plaene = array();
+            $woche = date("W", time());
+            $start = date("w", time()); //Wochentag auslesen
+            $start = time() - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
+            $start = mktime(0,0,1,date("m",  $start),date("d",  $start),date("Y",  $start));
+            $start = $terminplanner->calcStarttime($start, $i);
+            $termine = $terminplanner->getUserTermineWeek($start, $_REQUEST["user_id"], false);
+            $plan = $terminplanner->renderPlan($termine);
+            $plan["start"] = date("W",  $start);
+
         }
 
+        PageLayout::addStylesheet('../../plugins_packages/neo/dozentenplan/dozentenplan.css');
         $template = $this->getTemplate("dozentenplan.php", "without_infobox");
-        $template->set_attribute("stundenplan", $stundenplan);
+        if(isset($_REQUEST["user_id"])) $template->set_attribute("stundenplan", $plan["html"]);
+        if(isset($_REQUEST["user_id"])) $template->set_attribute("woche", $plan["start"]);
+        if(isset($_REQUEST["user_id"]) && $i > 0) $template->set_attribute("zurueck", $i-1);
+        if(isset($_REQUEST["user_id"])) $template->set_attribute("vor", $i+1);
+        if(isset($_REQUEST["user_id"])) $template->set_attribute("userid", $_REQUEST["user_id"]);
+
         echo $template->render();
     }
+
+
+    /**
+     * Gibt die Termine so aus damit eine Wochenübersicht erstellt werden kann
+     *
+     * @param string $uid die eindeutige StudIP ID des Users
+     * @return array $termine die Termine direkt zum Malen des Terminkalenders
+     */
+    public function getAllVlTermine($uid)
+    {
+        $hfwu = new hfwu();
+
+        $sql = "SELECT dates.seminar_id, seminare.VeranstaltungsNummer, seminare.Name, seminare.Ort, dates.start_time, dates.`end_time` , dates.`weekday`
+                 FROM  `seminar_cycle_dates` AS d«ates
+                 INNER JOIN seminare ON seminare.seminar_id = dates.seminar_id
+                 WHERE dates.`seminar_id`
+                 IN (
+                     SELECT seminar_id
+                     FROM  `seminar_user`
+                     WHERE  `user_id` LIKE  ?
+                 )
+                 AND seminare.start_time =  '1330556400'";
+
+        $db = DBManager::get()->prepare($sql);
+        $db->execute(array($uid));
+        $result = $db->fetchAll();
+        $entry = array();
+        foreach($result as $date) {
+            $typ = $hfwu->DateTypToHuman($date["date_typ"]);
+            $name = $date["Name"]." ".$typ["name"];
+            $entry[$date["weekday"]][] = array(
+                'id' => md5(uniqid()),
+                'color' => $typ["color"],
+                'start' => substr(str_replace(":", "", $date['start_time']), 0, 4),
+                'end' => substr(str_replace(":", "", $date['end_time']), 0, 4),
+                'title' => $name
+            );
+        }
+        return $entry;
+    }
+
+
+    //Beginn Standard Funktionen:
 
     protected function getDisplayName() {
         return "Dozentenplan";

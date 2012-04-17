@@ -1,6 +1,6 @@
 pluginname=Dozentenplan
 pluginclassname=dozentenplan
 origin=neo
-version=0.1
+version=0.9
 description=Ein Plugin
 studipMinVersion=2.1
