@@ -30,3 +30,7 @@ $('#neo_termin_details').dialog({
                }
         });
 }
+
+$(document).ready(function(){
+    $( "#datepicker" ).datepicker();
+});

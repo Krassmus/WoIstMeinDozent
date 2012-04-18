@@ -27,10 +27,13 @@
 }
 
 .neo_dozenten_suche {
-    width: 400px;
-    margin-left: 30%;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
     border: 4px solid #F3AE00;
     border-radius: 3px;
     padding: 5px;
     height: 100px;
+    text-align: center;
+    font-size: 14px;
 }

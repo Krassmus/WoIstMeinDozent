@@ -39,27 +39,41 @@ class dozentenplan extends StudIPPlugin implements SystemPlugin {
             $terminplanner = new terminplan();
             $jsbefehl = "function() { showdetails('id'); }";
             $terminplanner->setOnClick($jsbefehl);
+            $terminplanner->toggleabschneiden();
+            $terminplanner->setRange("6","21");
             if(empty($_REQUEST["i"])) $i=0; //Vorlauf 0 = diese Woche / 1 = nächste Woche usw...
             else $i = $_REQUEST["i"];
-
             //$woche = date("W", time());
-            $start = date("w", time()); //Wochentag auslesen
-            $start = time() - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
+            if(!empty($_REQUEST["datum"])) {
+                $datum = $_REQUEST["datum"];
+                //Datum aufstückeln
+                $tag = $datum[0].$datum[1];
+                $monat = $datum[3].$datum[4];
+                $jahr = $datum[6].$datum[7].$datum[8].$datum[9];
+                //in UnixTime umwandeln
+                $datum = mktime(0,0,1,$monat,$tag,$jahr);
+                $start = date("w", $datum); //Wochentag auslesen
+                $start = $datum - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
+            } else {
+                $start = date("w", time()); //Wochentag auslesen
+                $start = time() - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
+            }
             $start = mktime(0,0,1,date("m",  $start),date("d",  $start),date("Y",  $start));
             $start = $terminplanner->calcStarttime($start, $i);
             $termine = $terminplanner->getUserTermineWeek($start, $_REQUEST["user_id"], false);
             $plan = $terminplanner->renderPlan($termine);
-            $woche = date("W",  $start)." (".date("d.m.Y",  $start)."-".date("d.m.Y",  $start+604800).")"; //
+            $woche = date("W",  $start)." (".date("d.m.Y",  $start)."-".date("d.m.Y",  $start+518399).")"; //
             $plan["start"] = $woche;
-
+            $plan["letztewoche"] = date("d.m.Y", mktime(0,0,1,date("m",  $start),date("d",  $start)-7,date("Y",  $start)));
+            $plan["naechstewoche"] = date("d.m.Y", mktime(0,0,1,date("m",  $start),date("d",  $start)+7,date("Y",  $start)));
         }
 
         PageLayout::addStylesheet('../../plugins_packages/neo/dozentenplan/dozentenplan.css');
         $template = $this->getTemplate("dozentenplan.php", "without_infobox");
         if(isset($_REQUEST["user_id"])) $template->set_attribute("stundenplan", $plan["html"]);
         if(isset($_REQUEST["user_id"])) $template->set_attribute("woche", $plan["start"]);
-        if(isset($_REQUEST["user_id"]) && $i > 0) $template->set_attribute("zurueck", $i-1);
-        if(isset($_REQUEST["user_id"])) $template->set_attribute("vor", $i+1);
+        if(isset($_REQUEST["user_id"])) $template->set_attribute("zurueck", $plan["letztewoche"]);
+        if(isset($_REQUEST["user_id"])) $template->set_attribute("vor", $plan["naechstewoche"]);
         if(isset($_REQUEST["user_id"])) $template->set_attribute("userid", $_REQUEST["user_id"]);
 
         echo $template->render();
