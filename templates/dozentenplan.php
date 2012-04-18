@@ -11,15 +11,19 @@
 </div>
 <div class="neo_platzhalter"></div>
 <div class="neo_wochenwechsel">
-    <div id="neo_wochenwechsel_minus">
-        <? if($zurueck >= 0): ?>
-            <a href="?user_id=<?= $userid ?>&i=<?= $zurueck ?>" ><img src="/assets/images/icons/16/yellow/arr_2left.png" alt=""></a>
-         <? endif ?>
+
+    <div id="neo_wochenwechsel_datum">
+        <div id="neo_wochenwechsel_minus">
+            <? if($zurueck >= 0): ?>
+                <a href="?user_id=<?= $userid ?>&i=<?= $zurueck ?>" ><img src="/assets/images/icons/16/yellow/arr_2left.png" alt=""></a>
+             <? endif ?>
+        </div>
+        KW: <?= $woche ?>
+        <a href="?user_id=<?= $userid ?>&i=<?= $vor ?>" >
+                <div id="neo_wochenwechsel_plus"><img src="/assets/images/icons/16/yellow/arr_2right.png" alt=""></div>
+        </a>
     </div>
-    <div id="neo_wochenwechsel_datum">KW: <?= $woche ?> </div>
-    <a href="?user_id=<?= $userid ?>&i=<?= $vor ?>" >
-        <div id="neo_wochenwechsel_plus"><img src="/assets/images/icons/16/yellow/arr_2right.png" alt=""></div>
-    </a>
+
 </div>
 
         <?= $stundenplan ?>

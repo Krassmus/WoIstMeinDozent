@@ -24,7 +24,9 @@ $('#neo_termin_details').dialog({
                modal: true,
                minWidth: 800,
                buttons: {
-                   'abbrechen': function() {}
+                   'Ok': function() {
+                       $(this).dialog("close");
+                   }
                }
         });
 }

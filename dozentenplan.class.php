@@ -41,15 +41,16 @@ class dozentenplan extends StudIPPlugin implements SystemPlugin {
             $terminplanner->setOnClick($jsbefehl);
             if(empty($_REQUEST["i"])) $i=0; //Vorlauf 0 = diese Woche / 1 = nächste Woche usw...
             else $i = $_REQUEST["i"];
-            $plaene = array();
-            $woche = date("W", time());
+
+            //$woche = date("W", time());
             $start = date("w", time()); //Wochentag auslesen
             $start = time() - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
             $start = mktime(0,0,1,date("m",  $start),date("d",  $start),date("Y",  $start));
             $start = $terminplanner->calcStarttime($start, $i);
             $termine = $terminplanner->getUserTermineWeek($start, $_REQUEST["user_id"], false);
             $plan = $terminplanner->renderPlan($termine);
-            $plan["start"] = date("W",  $start);
+            $woche = date("W",  $start)." (".date("d.m.Y",  $start)."-".date("d.m.Y",  $start+604800).")"; //
+            $plan["start"] = $woche;
 
         }
 
