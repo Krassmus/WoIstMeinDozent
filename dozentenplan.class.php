@@ -37,6 +37,8 @@ class dozentenplan extends StudIPPlugin implements SystemPlugin {
 
         if(!empty($_REQUEST["user_id"])) {
             $terminplanner = new terminplan();
+            $jsbefehl = "function() { showdetails('id'); }";
+            $terminplanner->setOnClick($jsbefehl);
             if(empty($_REQUEST["i"])) $i=0; //Vorlauf 0 = diese Woche / 1 = nächste Woche usw...
             else $i = $_REQUEST["i"];
             $plaene = array();

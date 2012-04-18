@@ -23,3 +23,7 @@
 </div>
 
         <?= $stundenplan ?>
+
+<div id="neo_termin_details">
+
+</div>

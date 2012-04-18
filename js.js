@@ -8,3 +8,23 @@ jQuery(window).resize(function () {
 jQuery(function () {
     jQuery(window).trigger("resize");
 });
+function showdetails(id) {
+    $.ajax({
+      type: "POST",
+      url: "/plugins_packages/neo/dozentenplan/ajax.php",
+      data: { cmd: "renderDetails", id: id }
+    }).done(function(data) {
+            $('#neo_termin_details').html(data)
+    });
+
+
+$('#neo_termin_details').dialog({
+               show: "slide",
+               hide: "slide",
+               modal: true,
+               minWidth: 800,
+               buttons: {
+                   'abbrechen': function() {}
+               }
+        });
+}
