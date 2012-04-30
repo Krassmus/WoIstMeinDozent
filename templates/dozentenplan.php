@@ -9,6 +9,7 @@
         <br/>Datum (falls gew&uuml;nscht):
         <br/><input id="datepicker" type="text" name="datum" value="<?= Request::get('datum') ?>"><br/>
     <input type="image" src="<?= Assets::image_path("icons/16/blue/search.png") ?>">
+		<a href="/plugins.php/dozentenplan/"><img src="/../../assets/images/icons/16/blue/refresh.png" alt="Neue Suche"></a>
     </form>
 </div>
 <div class="neo_platzhalter"></div>

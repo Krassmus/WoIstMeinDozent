@@ -20,21 +20,23 @@ $perm->check('admin');
 switch($_REQUEST['cmd']) {
     case 'renderDetails':
         //Allgemeine Termin Infos
-        $sql = "SELECT termine.`raum`,seminare.name, seminare.VeranstaltungsNummer, seminare.Seminar_id, termine.date, termine.end_time, Institute.Name as heimat FROM `termine`
+        $sql = "SELECT termine.raum AS raum_frei, seminare.name, seminare.VeranstaltungsNummer, seminare.Seminar_id, termine.date, termine.end_time, Institute.Name as heimat, resources_objects.name AS raum FROM `termine`
         INNER JOIN seminare on seminare.Seminar_id = termine.`range_id`
         INNER JOIN Institute on Institute.Institut_id = seminare.Institut_id
+        INNER JOIN resources_assign ON resources_assign.assign_user_id = termine.termin_id
+        INNER JOIN resources_objects ON resources_objects.resource_id = resources_assign.resource_id
         WHERE termine.termin_id = ?";
-        $id = $_REQUEST['id'];
+				$id = $_REQUEST['id'];
         $db = DBManager::get()->prepare($sql);
         $db->execute(array($id));
         $result = $db->fetchAll();
         //Füllen der ersten Variabeln
         $raum = $result[0]['raum'];
+				if(empty($raum)) $raum = $result[0]['raum_frei'];
         $sem_name = $result[0]['name'];
         $sem_id = $result[0]['Seminar_id'];
         $start = date("h:i",$result[0]['date']);
         $ende = date("h:i",$result[0]['end_time']);
-        $einrichtungen = $result[0]['heimat']."(Heimateinrichtung)<br/>";
         $dozenten = "";
         //Dozenten der VL abrufen
         $sql = "SELECT auth_user_md5.Vorname, auth_user_md5.Nachname FROM `seminar_user`
@@ -70,7 +72,7 @@ switch($_REQUEST['cmd']) {
         <strong>Raum</strong>: $raum<br/>
         <strong>Start</strong>: $start<br/>
         <strong>Ende</strong>: $ende<br/>
-        <strong>Link zu Veranstaltung</strong>: <a href='/adminarea_start.php?cid=$sem_id'>$sem_name</a><br/>
+        <strong>Link zu Veranstaltung</strong>: <a href='/details.php?cid=$sem_id' target='_blank'>$sem_name</a><br/>
         <strong>Liste der Beteiligten Einrichtungen</strong>: <br/>$einrichtungen
         ";
         echo $html;
