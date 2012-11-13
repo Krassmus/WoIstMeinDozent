@@ -3,4 +3,12 @@ WoIstMeinDozent
 
 StudIP Plugin das den Stundenplan eines Dozenten ausgibt.
 
-Dieses Plugin wird auf Trails umgeschrieben und hat bis jetzt keine Funktion
+Das Plugin überprüft nur die Vorlesungen und gibt diese bei Bedarf aus.
+
+
+Noch ist sie nicht außerhalb der HFWU einsetzbar.
+
+==Features==
+
+==BUGS==
+Verwendet noch die HFWU Klasse für die Farben (schlecht)
