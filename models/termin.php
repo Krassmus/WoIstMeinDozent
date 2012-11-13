@@ -17,51 +17,63 @@ class terminmodel {
         $jahr = $date[6].$date[7].$date[8].$date[9];
         //in UnixTime umwandeln
         $datum = mktime(0,0,1,$monat,$tag,$jahr);
-        return $datum;
+        $start = date("w", $datum); //Wochentag auslesen
+        $this->flash->start = $datum - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
+        $this->flash->ende = $this->flash->start + (7*86400);
+        $this->flash->datum = $datum;
     }
     
     function getAllVlTermine()
     {
         $hfwu = new hfwu();
-
-        $sql = "SELECT dates.seminar_id, seminare.VeranstaltungsNummer, seminare.Name, seminare.Ort, dates.start_time, dates.`end_time` , dates.`weekday`
-                 FROM  `seminar_cycle_dates` AS dates
-                 INNER JOIN seminare ON seminare.seminar_id = dates.seminar_id
-                 WHERE dates.`seminar_id`
-                 IN (
-                     SELECT seminar_id
-                     FROM  `seminar_user`
-                     WHERE  `user_id` LIKE  ?
-                 )
-                 AND seminare.start_time =  '1330556400'";
-
+        $sql = "SELECT termine.termin_id as id,termine.date, termine.end_time, seminare.Name, termine.date_typ, termine.raum, termine.range_id "
+              ."FROM `termine` "
+              ."INNER JOIN seminare ON seminare.`Seminar_id` = termine.range_id "
+              ."WHERE range_id "
+              ."IN (SELECT `Seminar_id` "
+              ."    FROM `seminar_user` AS user "
+              ."    WHERE user.user_id = ? ) "
+              ."AND `date` >=? "
+              ."AND `end_time` <=? "
+             ;
+      echo $sql;
         $db = DBManager::get()->prepare($sql);
-        $db->execute(array($this->flash->userid));
+        $db->execute(array($this->flash->userid, $this->flash->start, $this->flash->ende)); 
+        echo $this->flash->userid ." -> ". $this->flash->start ." -> ". $this->flash->ende ." -> ".$this->flash->vlbeginn;
         $result = $db->fetchAll();
         $entry = array();
         foreach($result as $date) {
             $typ = $hfwu->DateTypToHuman($date["date_typ"]);
             $name = $date["Name"]." ".$typ["name"];
-            $entry[$date["weekday"]][] = array(
+            $start = date("Hi", $date['date']);
+            $ende = date("Hi", $date['end_time']);
+            $weekday = date("N", $date['date']);
+            $entry[$weekday][] = array(
                 'id' => md5(uniqid()),
                 'color' => $typ["color"],
-                'start' => substr(str_replace(":", "", $date['start_time']), 0, 4),
-                'end' => substr(str_replace(":", "", $date['end_time']), 0, 4),
+                'start' => $start,
+                'end' => $ende,
                 'title' => $name,
-                'onClick' => "function() { showdetails('id'); }"
+                'onClick' => "function() { showdetails('".$date["id"]."'); }"
             );
         }
         $this->flash->vltermine = $entry;
+        echo "<pre>";
+        print_r($this->flash->vltermine);
+        echo "</pre>";
+        return true;
     }
     
+    function getVl() {
+        
+    }
+
+
     function renderPlan() {
         terminmodel::getAllVlTermine();
-        //print_r( $this->flash->vltermine);
         $plan = new CalendarView();
-        //$plan->setOnClick($jsbefehl);
         $plan->setRange("6","21");
-        //Maontags
-        
+
         $plan->addColumn(_('Montag'));
         if(sizeof($this->flash->vltermine[1]) > "0") {
         foreach($this->flash->vltermine[1] as $date) $plan->addEntry($date);
@@ -92,6 +104,56 @@ class terminmodel {
         $plaene["html"] =  $plan->render();
 
         return $plaene["html"];
+    }
+    
+    function getTermin() {
+        
+        //Allgemeine Infos setzen
+        $sql = "SELECT termine.raum AS raum_frei, seminare.name, seminare.VeranstaltungsNummer, seminare.Seminar_id, termine.date, termine.end_time FROM `termine`
+        INNER JOIN seminare on seminare.Seminar_id = termine.`range_id`
+        WHERE termine.termin_id = ?";
+        /*
+         * INNER JOIN resources_assign ON resources_assign.assign_user_id = termine.termin_id resources_objects.name AS raum
+         * INNER JOIN resources_objects ON resources_objects.resource_id = resources_assign.resource_id
+         */
+        $id = $_REQUEST['id'];
+        $db = DBManager::get()->prepare($sql);
+        $db->execute(array($id));
+        $result = $db->fetchAll();
+        
+        $this->sem_name = $result[0]['name'];
+        $this->sem_id = $result[0]['Seminar_id'];
+        $this->start = date("d.m.Y, h:i",$result[0]['date']);
+        $this->ende = date("d.m.Y, h:i",$result[0]['end_time']);
+        
+        // Raum auslesen
+        
+        // Dozenten auslesen
+         $sql = "SELECT auth_user_md5.Vorname, auth_user_md5.Nachname FROM `seminar_user`
+                INNER JOIN auth_user_md5 on seminar_user.user_id = auth_user_md5.user_id
+                WHERE Seminar_id = ?
+                AND status='dozent'";
+        $db = DBManager::get()->prepare($sql);
+        $db->execute(array($this->sem_id));
+        $result = $db->fetchAll();
+        //Dozenten in die VL eintragen
+        foreach($result as $res) {
+            $this->dozenten .= $res["Vorname"]." ".$res["Nachname"]."<br/>";
+        }
+        // Einrichtungen
+        //Beteiligte Einrichtungen eintragen:
+
+        $sql = "SELECT Institute.Name
+                FROM `seminar_inst`
+                INNER JOIN Institute on Institute.Institut_id = seminar_inst.Institut_id
+                WHERE Seminar_id = ?";
+        $db = DBManager::get()->prepare($sql);
+        $db->execute(array($this->sem_id));
+        $result = $db->fetchAll();
+        //Dozenten in die VL eintragen
+        foreach($result as $res) {
+           $this->einrichtungen .= $res["Name"]."<br/>";
+        }
     }
 }
 ?>

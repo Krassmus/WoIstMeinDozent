@@ -44,7 +44,7 @@ class startController extends StudipController {
         }
         //Ueberpruefen ob eine Datum ausgewaehlt wurde
         if(isset($_REQUEST["datum"])) {
-            $this->flash->datum = terminmodel::dateToTime($_REQUEST["datum"]);
+            terminmodel::dateToTime($_REQUEST["datum"]);
         } else {
             $this->flash->datum = time();
         }

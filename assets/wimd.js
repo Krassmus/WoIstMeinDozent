@@ -11,7 +11,7 @@ jQuery(function () {
 function showdetails(id) {
     $.ajax({
       type: "POST",
-      url: "/plugins_packages/neo/dozentenplan/ajax.php",
+      url: "./ajax/renderDetails",
       data: { cmd: "renderDetails", id: id }
     }).done(function(data) {
             $('#neo_termin_details').html(data)
