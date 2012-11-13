@@ -36,10 +36,8 @@ class terminmodel {
               ."AND `date` >=? "
               ."AND `end_time` <=? "
              ;
-      echo $sql;
         $db = DBManager::get()->prepare($sql);
         $db->execute(array($this->flash->userid, $this->flash->start, $this->flash->ende)); 
-        echo $this->flash->userid ." -> ". $this->flash->start ." -> ". $this->flash->ende ." -> ".$this->flash->vlbeginn;
         $result = $db->fetchAll();
         $entry = array();
         foreach($result as $date) {
@@ -58,9 +56,6 @@ class terminmodel {
             );
         }
         $this->flash->vltermine = $entry;
-        echo "<pre>";
-        print_r($this->flash->vltermine);
-        echo "</pre>";
         return true;
     }
     
@@ -107,46 +102,30 @@ class terminmodel {
     }
     
     function getTermin() {
-        
         //Allgemeine Infos setzen
+        $this->flash->id = $_REQUEST['id'];
         $sql = "SELECT termine.raum AS raum_frei, seminare.name, seminare.VeranstaltungsNummer, seminare.Seminar_id, termine.date, termine.end_time FROM `termine`
         INNER JOIN seminare on seminare.Seminar_id = termine.`range_id`
         WHERE termine.termin_id = ?";
-        /*
-         * INNER JOIN resources_assign ON resources_assign.assign_user_id = termine.termin_id resources_objects.name AS raum
-         * INNER JOIN resources_objects ON resources_objects.resource_id = resources_assign.resource_id
-         */
-        $id = $_REQUEST['id'];
         $db = DBManager::get()->prepare($sql);
-        $db->execute(array($id));
+        $db->execute(array($this->flash->id));
         $result = $db->fetchAll();
         
         $this->sem_name = $result[0]['name'];
         $this->sem_id = $result[0]['Seminar_id'];
-        $this->start = date("d.m.Y, h:i",$result[0]['date']);
-        $this->ende = date("d.m.Y, h:i",$result[0]['end_time']);
+        $this->start = date("d.m.Y, H:i",$result[0]['date']);
+        $this->ende = date("d.m.Y, H:i",$result[0]['end_time']);
         
         // Raum auslesen
-        
+        terminmodel::getRoomToDate();
         // Dozenten auslesen
-         $sql = "SELECT auth_user_md5.Vorname, auth_user_md5.Nachname FROM `seminar_user`
-                INNER JOIN auth_user_md5 on seminar_user.user_id = auth_user_md5.user_id
-                WHERE Seminar_id = ?
-                AND status='dozent'";
-        $db = DBManager::get()->prepare($sql);
-        $db->execute(array($this->sem_id));
-        $result = $db->fetchAll();
-        //Dozenten in die VL eintragen
-        foreach($result as $res) {
-            $this->dozenten .= $res["Vorname"]." ".$res["Nachname"]."<br/>";
-        }
+        dozentmodel::getListDozenten();
         // Einrichtungen
-        //Beteiligte Einrichtungen eintragen:
 
-        $sql = "SELECT Institute.Name
-                FROM `seminar_inst`
-                INNER JOIN Institute on Institute.Institut_id = seminar_inst.Institut_id
-                WHERE Seminar_id = ?";
+        $sql = "SELECT Institute.Name "
+              ."FROM `seminar_inst` "
+              ."INNER JOIN Institute on Institute.Institut_id = seminar_inst.Institut_id "
+              ."WHERE Seminar_id = ?"; 
         $db = DBManager::get()->prepare($sql);
         $db->execute(array($this->sem_id));
         $result = $db->fetchAll();
@@ -154,6 +133,19 @@ class terminmodel {
         foreach($result as $res) {
            $this->einrichtungen .= $res["Name"]."<br/>";
         }
+    }
+    /*
+     * Gibt den Raum zu einem Termin aus bzw. speichert diesen in $this-raum
+     */
+    function getRoomToDate() {
+         $sql =  "SELECT ro.name AS raum "
+               ." FROM resources_objects as ro"
+               ." INNER JOIN resources_assign as ra ON ra.resource_id = ro.resource_id"
+               ." WHERE ra.assign_user_id = ?";
+        $db = DBManager::get()->prepare($sql);
+        $db->execute(array($this->flash->id));
+        $result = $db->fetchAll();
+        $this->raum = $result[0][0];
     }
 }
 ?>
