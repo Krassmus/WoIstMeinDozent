@@ -1,3 +1,6 @@
+<? if (isset($message)): ?>
+  <?= MessageBox::success($message) ?>
+<? endif ?>
 <h2>Wo ist mein Dozent</h2>
 <div class="neo_dozenten_suche"> Name des Dozenten:
     <form action="?" method="GET">
