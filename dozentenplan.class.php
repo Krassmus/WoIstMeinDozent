@@ -44,8 +44,9 @@ class dozentenplan extends StudIPPlugin implements SystemPlugin {
             if(empty($_REQUEST["i"])) $i=0; //Vorlauf 0 = diese Woche / 1 = nächste Woche usw...
             else $i = $_REQUEST["i"];
             //$woche = date("W", time());
-            if(!empty($_REQUEST["datum"])) {
-                $datum = $_REQUEST["datum"];
+
+					if(!empty($_REQUEST["datum"])) {
+								$datum = $_REQUEST["datum"];
                 //Datum aufstückeln
                 $tag = $datum[0].$datum[1];
                 $monat = $datum[3].$datum[4];
@@ -55,11 +56,11 @@ class dozentenplan extends StudIPPlugin implements SystemPlugin {
                 $start = date("w", $datum); //Wochentag auslesen
                 $start = $datum - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
             } else {
-                $start = date("w", time()); //Wochentag auslesen
-                $start = time() - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
+							$start = date("w", time()); //Wochentag auslesen
+							$start = time() - (($start-1)*86400); //Tag - Wochentag + 1 -> Datum des Montags.
             }
             $start = mktime(0,0,1,date("m",  $start),date("d",  $start),date("Y",  $start));
-            $start = $terminplanner->calcStarttime($start, $i);
+            //if($i == 0) $start = $terminplanner->calcStarttime($start, $i);
             $termine = $terminplanner->getUserTermineWeek($start, $_REQUEST["user_id"], false);
             $plan = $terminplanner->renderPlan($termine);
             $woche = date("W",  $start)." (".date("d.m.Y",  $start)."-".date("d.m.Y",  $start+518399).")"; //
