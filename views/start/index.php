@@ -12,7 +12,7 @@
         <br/>Datum (falls gew&uuml;nscht):
         <br/><input id="datepicker" type="text" name="datum" value="<?= Request::get('datum') ?>"><br/>
     <input type="image" src="<?= Assets::image_path("icons/16/blue/search.png") ?>">
-		<a href="/plugins.php/dozentenplan/"><img src="/../../assets/images/icons/16/blue/refresh.png" alt="Neue Suche"></a>
+		<a href="/plugins.php/dozentenplan/"><img src="<?= $assetspfad ?>/image/refresh.png" alt="Neue Suche"></a>
     </form>
 </div>
 <div class="neo_platzhalter"></div>
@@ -21,12 +21,12 @@
     <div id="neo_wochenwechsel_datum">
         <div id="neo_wochenwechsel_minus">
             <? if($zurueck >= 0): ?>
-                <a href="?user_id=<?= $userid ?>&datum=<?= $zurueck ?>" ><img src="/assets/images/icons/16/yellow/arr_2left.png" alt=""></a>
+                <a href="?user_id=<?= Request::get("user_id")?>&datum=<?= $zurueck ?>" ><img src="<?= $assetspfad ?>/image/arr_2left.png" alt=""></a>
              <? endif ?>
         </div>
         KW: <?= $woche ?>
-        <a href="?user_id=<?= $userid ?>&datum=<?= $vor ?>" >
-                <div id="neo_wochenwechsel_plus"><img src="/assets/images/icons/16/yellow/arr_2right.png" alt=""></div>
+        <a href="?user_id=<?= Request::get("user_id") ?>&datum=<?= $vor ?>" >
+                <div id="neo_wochenwechsel_plus"><img src="<?= $assetspfad ?>/image/arr_2right.png" alt=""></div>
         </a>
     </div>
 
