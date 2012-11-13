@@ -14,10 +14,10 @@ class woistmeindozent extends StudipPlugin implements SystemPlugin {
      function __construct()
     {
         parent::__construct();
-        $navigation = new Navigation('Wo ist mein Dozemt');
+        $navigation = new Navigation('Wo ist mein Dozent');
 	$navigation->setURL(PluginEngine::getURL('woistmeindozent/start'));
         Navigation::addItem('/start/'.get_class($this), $navigation);
-
+        $GLOBALS["plugin_pfad"] = $this->getPluginURL();
     }
     
      /**

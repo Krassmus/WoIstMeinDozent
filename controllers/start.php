@@ -20,14 +20,16 @@ class startController extends StudipController {
         // set default layout
         $layout = $GLOBALS['template_factory']->open('layouts/base');
         $this->set_layout($layout);
-
-        //$GLOBALS['CURRENT_PAGE'] = 'TrailsDemo';
-        //Navigation::activateItem('/trails/demo');
+            
+        $GLOBALS['CURRENT_PAGE'] = 'Wo Ist mein Dozent';
     }
     
     function index_action($parm1 = false, $parm2 = false) {
+        PageLayout::addStylesheet($GLOBALS["plugin_pfad"].'/assets/dozentenplan.css');
+        PageLayout::addScript($GLOBALS["plugin_pfad"]. '/assets/wimd.js');
         $this->message = "Das ist ein test";
-        //$this->data("index", "Das ist ein test");
+        $this->data = "Blubb";
+        
     }
 }
 
