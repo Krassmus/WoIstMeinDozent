@@ -1,20 +1,14 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+//Benötigte Dateien
 require_once 'app/controllers/authenticated_controller.php';
-require_once dirname(__FILE__).'/../models/dozent.php';
-require_once dirname(__FILE__).'/../models/termin.php';
+require_once dirname(__FILE__).'/../model/dozent.php';
+require_once dirname(__FILE__).'/../model/termin.php';
 /**
  * Description of woistmeindozent
  *
  * @author johannesstichler
  */
 class startController extends StudipController {
-    var $userid;
-    var $datum;
     /**
      * Common code for all actions: set default layout and page title.
      */
@@ -31,7 +25,7 @@ class startController extends StudipController {
     }
     
     /*
-     * 
+     * Gibt die UI aus.
      */
     function index_action($parm1 = false, $parm2 = false) {
         PageLayout::addStylesheet($this->assetspfad .'dozentenplan.css');
@@ -45,16 +39,19 @@ class startController extends StudipController {
             }
         }
         //Ueberpruefen ob eine Datum ausgewaehlt wurde
-        if(isset($_REQUEST["datum"])) {
-            terminmodel::dateToTime($_REQUEST["datum"]);
+        if(!empty($_REQUEST["datum"])) {
+            terminmodel::dateToTime($_REQUEST["datum"]); //Umwandlung in ein Maschinen Datum
         } else {
-            $this->flash->datum = time();
+            terminmodel::dateToTime(date("j").date("n").date("Y")); //Wenn keinD Datum gesetzt ist das Aktuelle Datum übergeben
         }
+        //Datum fuer naechste Woche generieren
         $this->vor = date("d.m.Y", $this->flash->datum + (7*86400));;
+        //Datum von letzte Woche generieren
         $this->zurueck = date("d.m.Y", $this->flash->datum - (7*86400));
+        //Welche Kalenderwoche man sich befindet
         $this->woche = date("W", $this->flash->datum);
+        //Den Plan ausgeben
         $this->stundenplan = terminmodel::renderPlan();
     }
 }
-
 ?>

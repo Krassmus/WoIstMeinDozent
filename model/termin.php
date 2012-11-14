@@ -24,8 +24,7 @@ class terminmodel {
     }
     
     function getAllVlTermine()
-    {
-        $hfwu = new hfwu();
+    { 
         $sql = "SELECT termine.termin_id as id,termine.date, termine.end_time, seminare.Name, termine.date_typ, termine.raum, termine.range_id "
               ."FROM `termine` "
               ."INNER JOIN seminare ON seminare.`Seminar_id` = termine.range_id "
@@ -41,7 +40,7 @@ class terminmodel {
         $result = $db->fetchAll();
         $entry = array();
         foreach($result as $date) {
-            $typ = $hfwu->DateTypToHuman($date["date_typ"]);
+            $typ = terminmodel::DateTypToHuman($date["date_typ"]);
             $name = $date["Name"]." ".$typ["name"];
             $start = date("Hi", $date['date']);
             $ende = date("Hi", $date['end_time']);
@@ -146,6 +145,22 @@ class terminmodel {
         $db->execute(array($this->flash->id));
         $result = $db->fetchAll();
         $this->raum = $result[0][0];
+    }
+    
+    function DateTypToHuman($typ) {
+        switch($typ) {
+            case 1: $return = array("name"=>_("Vorlesung"), "sitzung"=>1, "color"=>"#2D2C64"); break;
+            case 2: $return = array("name"=>_("Vorbesprechung"), "sitzung"=>0, "color"=>"#5C2D64"); break;
+            case 3: $return = array("name"=>_("Klausur"), "sitzung"=>0, "color"=>"#526416"); break;
+            case 4: $return = array("name"=>_("Exkursion"), "sitzung"=>0, "color"=>"#505064"); break;
+            case 5: $return = array("name"=>_("Neuer Termin / Ersatztermin"), "sitzung"=>1, "color"=>"#41643F"); break;
+            case 6: $return = array("name"=>_("Ausfall"), "sitzung"=>0, "color"=>"#E60005"); break;
+            case 7: $return = array("name"=>_("Sitzung"), "sitzung"=>1, "color"=>"#627C95"); break;
+            case 8: $return = array("name"=>_("Sondertermin"), "sitzung"=>1, "color"=>"#2D2C64"); break;
+            case 9: $return = array("name"=>_("Freiwillig"), "sitzung"=>1,  "color"=>"#6c6c6c"); break;
+            default: $return = array("name"=>_("Vorlesung"), "sitzung"=>1, "color"=>"#2D2C64");
+        }
+        return $return;
     }
 }
 ?>
