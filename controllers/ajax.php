@@ -5,8 +5,8 @@
  * and open the template in the editor.
  */
 require_once 'app/controllers/authenticated_controller.php';
-require_once dirname(__FILE__).'/../models/dozent.php';
-require_once dirname(__FILE__).'/../models/termin.php';
+require_once dirname(__FILE__).'/../model/dozent.php';
+require_once dirname(__FILE__).'/../model/termin.php';
 /**
  * Description of ajax
  *

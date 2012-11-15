@@ -31,7 +31,8 @@ class terminmodel {
               ."WHERE range_id "
               ."IN (SELECT `Seminar_id` "
               ."    FROM `seminar_user` AS user "
-              ."    WHERE user.user_id = ? ) "
+              ."    WHERE user.user_id = ? "
+              ." AND status = 'dozent'   ) "
               ."AND `date` >=? "
               ."AND `end_time` <=? "
              ;
