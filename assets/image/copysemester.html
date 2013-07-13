@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class=" js"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta charset="WINDOWS-1252">
+    <title>
+        VL Manager - Hochschule fuer Wirtschaft und Umwelt    </title>
+    <script src="copysemester-Dateien/base.js" charset="utf-8">
+</script>
+<link rel="stylesheet" href="copysemester-Dateien/jquery-ui-1.css" media="screen, print">
+<link rel="stylesheet" href="copysemester-Dateien/jquery-ui-studip-2.css" media="screen, print">
+<link rel="shortcut icon" href="http://localhost/neo/assets/images/favicon.ico">
+<link rel="stylesheet" href="copysemester-Dateien/style.css" media="screen, print">
+<link rel="stylesheet" href="copysemester-Dateien/header.css" media="screen, print">
+<link rel="stylesheet" href="copysemester-Dateien/smiley.css" media="screen, print">
+<meta http-equiv="refresh" content="3600; url=/neo/logout.php">
+<link rel="stylesheet" href="copysemester-Dateien/jquery-ui.css">
+<link rel="stylesheet" href="copysemester-Dateien/neo.css">
+<script src="copysemester-Dateien/neo.js">
+</script>
+<link rel="stylesheet" href="copysemester-Dateien/neocheck.css">
+<script src="copysemester-Dateien/tif.js">
+</script>
+
+    <script src="copysemester-Dateien/de_DE"></script>
+
+    <script>
+        STUDIP.ABSOLUTE_URI_STUDIP = "http://localhost/neo/";
+        STUDIP.ASSETS_URL = "http://localhost/neo/assets/";
+        String.locale = "de-DE";
+    </script>
+</head>
+
+<body id="plugins">
+<div id="layout_wrapper">
+            
+<!-- Start Header -->
+<div id="header">
+    <!--<div id='barTopLogo'>
+        <img src="http://localhost/neo/assets/images/logos/logoneu.jpg" alt="Logo Uni Göttingen">
+    </div>
+     -->
+    <div id="barTopFont">
+    Hochschule fuer Wirtschaft und Umwelt    </div>
+        <ul id="barTopMenu" role="navigation">
+                                        <li>
+                <a href="http://localhost/neo/index.php" title="Zur Startseite">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/home.png');" class=""> </span><br>
+                   Start               </a>
+            </li>
+                                                        <li>
+                <a href="http://localhost/neo/sms_box.php?sms_inout=in" title="Sie haben keine alten empfangenen Nachrichten">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/mail.png');" class=""> </span><br>
+                   Nachrichten               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/online.php" title="Nur Sie sind online">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/community.png');" class=""> </span><br>
+                   Community               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/about.php" title="Zu Ihrer Profilseite (stichler-root, root)">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/profile.png');" class=""> </span><br>
+                   Profil               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/calendar.php?caluser=self" title="Termine">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/calender/26.png');" class=""> </span><br>
+                   Planer               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/sem_portal.php" title="Suche">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/search.png');" class=""> </span><br>
+                   Suche               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/admin_news.php?range_id=self" title="Tools">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/tools.png');" class=""> </span><br>
+                   Tools               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/adminarea_start.php?list=TRUE" title="Zu Ihrer Administrationsseite">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/admin.png');" class=""> </span><br>
+                   Admin               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/resources.php?view=resources" title="Zur Ressourcenverwaltung">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/resources.png');" class=""> </span><br>
+                   Ressourcen               </a>
+            </li>
+                                                                                <li>
+                <a href="http://localhost/neo/plugins.php/neo_onlineservices/show" title="Online Services">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/world.png');" class="viewos"> </span><br>
+                   Onlineservices               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/plugins.php/schwarzesbrettplugin/?0=1" title="Keine neuen Anzeigen">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/schwarzes-brett.png');" class=""> </span><br>
+                   Schwarzes Brett               </a>
+            </li>
+                </ul>
+</div>
+<!-- Stud.IP Logo -->
+<div id="barTopStudip">
+    <a href="https://neo.hfwu.de/" title="NEO Startseite">
+        <img src="copysemester-Dateien/header_logo.png" alt="NEO Startseite">
+    </a>
+</div>
+<!-- Leiste unten -->
+<div id="barBottomContainer">
+    <div id="barBottomLeft">
+        Aktuelle Seite:    </div>
+    <div id="barBottommiddle">
+        Fehler            </div>
+    <!-- Dynamische Links ohne Icons -->
+    <div id="barBottomright">
+        <ul>
+                                                                        <li>
+                    <a href="http://localhost/neo/edit_about.php?view=allgemein">Einstellungen</a>
+                    </li>
+                                                                <li>
+                    <a href="http://docs.studip.de/help/2.3/de/Basis.Allgemeines" target="_blank">Hilfe</a>
+                    </li>
+                                                                <li>
+                    <a href="http://localhost/neo/logout.php">Logout</a>
+                    </li>
+                                                                <li>
+                    <a href="http://www.hfwu.de/" target="_blank">HFWU Webseite</a>
+                    </li>
+                                                </ul>
+    </div>
+</div>
+<!-- Ende Header -->
+
+<!-- Beginn Page -->
+<div id="layout_page">
+
+<div style="background-color: white; width: 70%; padding: 1em; margin: auto;">
+    <div class="messagebox messagebox_exception ">
+    <div class="messagebox_buttons">
+            <a class="close" href="#" title="Nachrichtenbox schliessen"><span>Nachrichtenbox schliessen</span></a>
+    </div>
+    Fehler! Bitte wenden Sie sich an Ihren Systemadministrator.    <div class="messagebox_details">
+        <ul>
+                    <li>SQLSTATE[42000]: Syntax error or access 
+violation: 1064 You have an error in your SQL syntax; check the manual 
+that corresponds to your MySQL server version for the right syntax to 
+use near 'AND' at line 2</li>
+                </ul>
+    </div>
+</div>
+    <p>
+      Zurück zur <a href="http://localhost/neo/index.php">Startseite</a>
+    </p>
+</div>
+
+</div>
+<!-- Ende Page -->
+    <div id="layout_push"></div>
+</div>
+        <!-- Beginn Footer -->
+    <div id="layout_footer">
+        <ul>
+                                            <li>
+                <a href="http://docs.studip.de/help/2.3/de/Basis.Allgemeines" target="_blank">Hilfe</a>
+                </li>
+                                                <li>
+                <a href="http://localhost/neo/dispatch.php/sitemap/">Sitemap</a>
+                </li>
+                                                <li>
+                <a href="http://www.studip.de/" target="_blank">Stud.IP</a>
+                </li>
+                                                <li>
+                <a href="http://blog.studip.de/" target="_blank">Blog</a>
+                </li>
+                                                <li>
+                <a href="http://localhost/neo/dispatch.php/siteinfo/show">Impressum</a>
+                </li>
+                                    </ul>
+    </div>
+    <!-- Ende Footer -->
+
+    
+
+</body></html>

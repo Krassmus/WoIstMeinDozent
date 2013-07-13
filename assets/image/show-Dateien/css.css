@@ -1,0 +1,90 @@
+#import_menu {
+    width: 600px;
+    padding: 10px 10px 10px 10px;
+    float: left;
+    display: block;
+    background-color: #f3ae00;
+    font-size: 14px;
+}
+
+.normal {
+    background-color: #f3ae00;
+    float: left;
+    padding: 10px 10px 10px 10px;
+    display: block;
+}
+
+.activat {
+    background-color: #fcf4e9;
+    display: block;
+}
+#upload_form {
+    display: none;
+    width: 600px;
+}
+
+#upload_button {
+    padding-left: 10px;
+}
+
+#edit_form {
+    display: none;
+}
+
+#edit_uid {
+    display: none;
+}
+
+#edit_dozenten {
+    display: none;
+}
+
+#edit_module {
+    display: none;
+}
+
+#edit_dozent_uid {
+    display: none;
+}
+
+#edit_sicherheitsabfrage_vl {
+    display: none;
+}
+
+#edit_sicherheitsabfrage_vl_uid {
+    display: none;
+}
+
+#edit_modul_neu_heimat_id {
+    display: none;
+}
+
+#edit_module_neu_andSemester {
+    display: none;
+}
+
+#edit_module_vorhanden_andSemester {
+    display: none;
+    font-size: 16px;
+}
+
+#edit_modul_vorhanden_heimat_id {
+    display: none;
+}
+
+#edit_module_vorhanden_heimat {
+
+}
+
+.notHere {
+    display: none;
+}
+
+.styled-select select {
+    background: transparent;
+    width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    height: 34px;
+}

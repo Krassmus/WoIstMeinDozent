@@ -9,6 +9,7 @@ require_once dirname(__FILE__).'/../model/termin.php';
  * @author johannesstichler
  */
 class startController extends StudipController {
+    var $assetspfad;
     /**
      * Common code for all actions: set default layout and page title.
      */
@@ -20,16 +21,16 @@ class startController extends StudipController {
         $this->set_layout($layout);
             
         $GLOBALS['CURRENT_PAGE'] = 'Wo Ist mein Dozent';
-        $this->assetspfad = $GLOBALS["plugin_pfad"].'/assets/';
-        
+        $this->flash->assetspfad = $GLOBALS["wimd_pfad"]; //$GLOBALS["plugin_pfad"].'/assets/';
     }
     
     /*
      * Gibt die UI aus.
      */
     function index_action($parm1 = false, $parm2 = false) {
-        PageLayout::addStylesheet($this->assetspfad .'dozentenplan.css');
-        PageLayout::addScript($this->assetspfad .'wimd.js');
+        $this->assetspfad = $this->flash->assetspfad;
+        PageLayout::addStylesheet("../../".$this->assetspfad .'dozentenplan.css');
+        PageLayout::addScript("../../".$this->assetspfad .'wimd.js');
         //Ueberpruefen ob ein Dozent uebergeben wurde und ob der User Dozent ist 
         if(isset($_REQUEST["user_id"]) ) {
             $this->flash->userid = $_REQUEST["user_id"];
@@ -52,6 +53,7 @@ class startController extends StudipController {
         $this->woche = date("W", $this->flash->datum);
         //Den Plan ausgeben
         $this->stundenplan = terminmodel::renderPlan();
+        $this->asset = "../../".$this->assetspfad;
     }
 }
 ?>

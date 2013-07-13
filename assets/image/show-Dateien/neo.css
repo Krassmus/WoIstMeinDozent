@@ -1,0 +1,254 @@
+#tabs a:hover {
+    background: none repeat scroll 0 0 #F3AE00;
+}
+
+#tabs a, #tabs2 a
+{
+    color: #000000;
+    font-weight: bold;
+}
+
+#tabs a, #tabs span.quiet
+{
+    display: block;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    white-space: nowrap;
+    color: #000000;
+}
+
+#tabs li {
+    background-color: #C0C0C0;
+    border-bottom: 1px solid #002F5E;
+    border-right: 1px solid #ffffff;
+}
+
+body {
+     background: url("") repeat scroll 0% 0% #EBEEF5;
+}
+
+h1.topic {
+     color: #FFFFFF;
+}
+
+h2.topic, h3.topic {
+     color: #FFFFFF;
+}
+
+.topic {
+     background-color: #F3AE00;
+     background-image: url("");
+     color: #002F5E;
+     padding: 2px;
+}
+
+.collapsable .toggle-indicator {
+     padding-left: 0pt;
+}
+
+input.quicksearchbox {
+     background-color: #EBEEF5;
+     color: #002F5E;
+     font-size: 10px;
+     vertical-align: middle;
+     width: 100px;
+}
+
+div#layout_footer {
+     background-color: #F3AE00;
+     border-top-color: #002F5E;
+     color: #002F5E;
+}
+
+div#barBottomLeft {
+     border-bottom-color: #002F5E;
+     border-top-color: #002F5E;
+}
+
+div#barBottommiddle {
+     border-bottom-color: #002F5E;
+     border-top-color: #002F5E;
+}
+
+a, a:link, a:visited {
+
+}
+
+div#barBottomright a, #layout_footer a {
+     color: #002F5E;
+}
+
+div#barBottomright a:hover, #layout_footer a:hover {
+     color: #002F5E;
+}
+
+#barTopMenu li.active a:hover, #barTopMenu a:hover, #barTopMenu li.active a {
+     color: #002F5E;
+}
+
+div#barBottomContainer
+{
+    background-color: #F3AE00;
+}
+
+div#barBottomLeft {
+    background-color: #F3AE00;
+    color: #113388;
+}
+div#barBottommiddle {
+    background-color: #F3AE00;
+    background-image: url("");
+    color: #113388;
+}
+div#barBottomright {
+    background-color: #F3AE00;
+}
+div#barBottomright a, #layout_footer a {
+    color: #113388;
+}
+div#header {
+    background-color: #FFFFFF;
+    background-image: url("");
+}
+div#barTopFont {
+    color: #113388;
+}
+#barTopMenu a {
+    color: #F3AE00;
+}
+#barTopMenu li.active a:hover, #barTopMenu a:hover, #barTopMenu li.active a {
+    color: #002F5E;
+}
+div#barTopStudip img {
+    border-top-width: 0;
+    padding-top: 0;
+    position: static;
+}
+div#barTopStudip {
+    top: 0;
+}
+
+.index_container_menu {
+    width: 49%;
+    margin-bottom: 5px;
+    float: left;
+    border: 3px solid #F3AE00;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    min-width:600px;
+    margin-right: 10px;
+    min-height: 100px;
+}
+.index_container_plugin {
+    width: 49%;
+    float: left;
+    border: 3px solid #F3AE00;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #F3F5F8;
+    min-width:600px;
+    min-height: 100px;
+
+}
+
+td.indexpage {
+    background: url("");
+}
+
+#index_pic {
+    width: 130px;
+    height: 130px;
+}
+img.index_pic
+{
+width: 130px;
+height: 130px;
+}
+
+#barTopMenu ul {
+    max-width: 400px;
+}
+
+#kummerkasten_bild {
+    margin-top: 10px;
+    background-image: url("/plugins_packages/neo/neolook/assets/imgs/Bt_LobuTadel.jpg");
+    background-repeat:no-repeat;
+    background-position:100px 50%;
+    width: 250px;
+    height: 142px;
+    position: relative;
+    z-index: 99;
+    margin-right: 100px;
+    float: left;
+}
+
+#kummerkasten_bild:hover {
+
+}
+table.index_box {
+    width: 49%;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 4px solid #F3AE00;
+    border-radius: 5px;
+    min-width:800px;
+    min-height: 50px;
+    max-width:100%;
+    float: left;
+    margin-left: 10px;
+
+}
+
+.index_head_status {
+    float: right;
+    padding-right: 15px;
+}
+
+#barBottomright:before {
+    background-image: url("");
+}
+
+
+#index_pic_div {
+    background-color: white;
+}
+/* Geschrieben von Sebastian Lock. Danke an Nicolas Gallagher (http://nicolasgallagher.com/pure-css-speech-bubbles/demo/) */
+.sprechblase { /*Hier kann alles veraendert werden. Es werden hier Breite, Abstand, Fontstyle, Eckenradien und Boxschatten einer Blase definiert*/
+    max-width: 500px; /*Maximale Breite einer Blase */
+    position:relative;
+    padding: 10px 15px 10px 15px;  /* Abstand des Textes in der Blase zu den Raendern */
+    margin: 5px 5px 0 5px; /*Abstand der Blase zu anderen Elementen*/
+    color:#000;
+    text-align:justify;
+    -webkit-border-radius:7px; /* Radien der Ecken */
+    -moz-border-radius:7px;
+    border-radius:7px;
+    -webkit-box-shadow: 5px 5px 25px #e7e7e7; /*Position und Farbe des Schattens einer Blase */
+    -moz-box-shadow: 5px 5px 25px #e7e7e7;
+    box-shadow: 5px 5px 25px #e7e7e7;
+    z-index: 9999;
+    border: 4px solid #F3AE00;
+    padding-bottom: 5px;
+}
+.sprechblase.links, .sprechblase { /* .sprechblase auch, damit eine unfortmatierte Blase links ausgerichtet wird */
+    left: -5px;
+    float: left;
+}
+
+.sprechblase.rechts {
+    float: right;
+    right: 0px;
+}
+
+.sprechblase.pfeillinksoben:after, .sprechblase.pfeilrechtsoben:after {
+    border-color:#efefef transparent;
+}
+
+.sprechblase.pfeillinksunten:after, .sprechblase.pfeilrechtsunten:after {
+    border-color:#d1d1d1 transparent;
+}
+
+.sprechblasebreak { /*regelt saubere Zeilenumbrueche*/
+    clear: both;
+}

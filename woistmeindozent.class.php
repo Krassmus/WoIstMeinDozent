@@ -11,13 +11,16 @@ require_once 'vendor/trails/trails.php';
  * @author johannesstichler
  */
 class woistmeindozent extends StudipPlugin implements SystemPlugin {
-     function __construct()
-    {
-        parent::__construct();
+     
+    public function __construct()
+    { 
+        parent::__construct();       
+        
         $navigation = new Navigation('Wo ist mein Dozent');
-	$navigation->setURL(PluginEngine::getURL('woistmeindozent/start'));
+        $navigation->setURL(PluginEngine::getURL('woistmeindozent/start'));
         Navigation::addItem('/start/'.get_class($this), $navigation);
-        $GLOBALS["plugin_pfad"] = $this->getPluginURL();
+         unset($GLOBALS["plugin_pfad"]);
+        $GLOBALS["wimd_pfad"] = $this->getPluginPath().'/assets/';//        $GLOBALS["plugin_pfad"] = ;
     }
     
      /**
@@ -25,12 +28,12 @@ class woistmeindozent extends StudipPlugin implements SystemPlugin {
      *
      * @param string   part of the dispatch path that was not consumed
      */
-    function perform($unconsumed_path)
+    public function perform($unconsumed_path)
     {
         $trails_root = $this->getPluginPath();
         $dispatcher = new Trails_Dispatcher($trails_root, NULL, NULL);
         $dispatcher->dispatch($unconsumed_path);
     }
 }
-
+    
 ?>

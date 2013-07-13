@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html class=" js"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta charset="WINDOWS-1252">
+    <title>
+      VL Manager - Hochschule fuer Wirtschaft und Umwelt    </title>
+    <script src="show-Dateien/base.js" charset="utf-8">
+</script>
+<link rel="stylesheet" href="show-Dateien/jquery-ui-1.css" media="screen, print">
+<link rel="stylesheet" href="show-Dateien/jquery-ui-studip-2.css" media="screen, print">
+<link rel="shortcut icon" href="http://localhost/neo/assets/images/favicon.ico">
+<link rel="stylesheet" href="show-Dateien/style.css" media="screen, print">
+<link rel="stylesheet" href="show-Dateien/header.css" media="screen, print">
+<link rel="stylesheet" href="show-Dateien/smiley.css" media="screen, print">
+<meta http-equiv="refresh" content="3600; url=/neo/logout.php">
+<link rel="stylesheet" href="show-Dateien/jquery-ui.css">
+<link rel="stylesheet" href="show-Dateien/neo.css">
+<script src="show-Dateien/neo.js">
+</script>
+<link rel="stylesheet" href="show-Dateien/neocheck.css">
+<script src="show-Dateien/tif.js">
+</script>
+<link rel="stylesheet" href="show-Dateien/css.css">
+<script src="show-Dateien/importer_show.js">
+</script>
+
+    <script src="show-Dateien/de_DE"></script>
+
+    <script>
+      STUDIP.ABSOLUTE_URI_STUDIP = "http://localhost/neo/";
+      STUDIP.ASSETS_URL = "http://localhost/neo/assets/";
+      String.locale = "de-DE";
+    </script>
+</head>
+
+<body id="plugins">
+<div id="layout_wrapper">
+                
+    <!-- Start Header -->
+<div id="header">
+    <!--<div id='barTopLogo'>
+        <img src="http://localhost/neo/assets/images/logos/logoneu.jpg" alt="Logo Uni Göttingen">
+    </div>
+     -->
+    <div id="barTopFont">
+    Hochschule fuer Wirtschaft und Umwelt    </div>
+        <ul id="barTopMenu" role="navigation">
+                                        <li>
+                <a href="http://localhost/neo/index.php" title="Zur Startseite">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/home.png');" class=""> </span><br>
+                   Start               </a>
+            </li>
+                                                                    <li>
+                <a href="http://localhost/neo/sms_box.php?sms_inout=in" title="Sie haben keine alten empfangenen Nachrichten">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/mail.png');" class=""> </span><br>
+                   Nachrichten               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/online.php" title="Nur Sie sind online">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/community.png');" class=""> </span><br>
+                   Community               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/about.php" title="Zu Ihrer Profilseite (stichler-root, root)">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/profile.png');" class=""> </span><br>
+                   Profil               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/calendar.php?caluser=self" title="Termine">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/calender/27.png');" class=""> </span><br>
+                   Planer               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/sem_portal.php" title="Suche">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/search.png');" class=""> </span><br>
+                   Suche               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/admin_news.php?range_id=self" title="Tools">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/tools.png');" class=""> </span><br>
+                   Tools               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/adminarea_start.php?list=TRUE" title="Zu Ihrer Administrationsseite">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/admin.png');" class=""> </span><br>
+                   Admin               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/resources.php?view=resources" title="Zur Ressourcenverwaltung">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/resources.png');" class=""> </span><br>
+                   Ressourcen               </a>
+            </li>
+                                                                                <li>
+                <a href="http://localhost/neo/plugins.php/neo_onlineservices/show" title="Online Services">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/world.png');" class="viewos"> </span><br>
+                   Onlineservices               </a>
+            </li>
+                                            <li>
+                <a href="http://localhost/neo/plugins.php/schwarzesbrettplugin/?amp%3B0=1" title="Keine neuen Anzeigen">
+                   <span style="background-image: url('http://localhost/neo/plugins_packages/neo/neolook/assets/imgs/schwarzes-brett.png');" class=""> </span><br>
+                   Schwarzes Brett               </a>
+            </li>
+                </ul>
+</div>
+<!-- Stud.IP Logo -->
+<div id="barTopStudip">
+    <a href="https://neo.hfwu.de/" title="NEO Startseite">
+        <img src="show-Dateien/header_logo.png" alt="NEO Startseite">
+    </a>
+</div>
+<!-- Leiste unten -->
+<div id="barBottomContainer">
+    <div id="barBottomLeft">
+        Aktuelle Seite:    </div>
+    <div id="barBottommiddle">
+        VL Manager            </div>
+    <!-- Dynamische Links ohne Icons -->
+    <div id="barBottomright">
+        <ul>
+                        <li>
+            <form id="quicksearch" role="search" action="/neo/sem_portal.php?send=yes&amp;group_by=0" method="post">
+              <input name="security_token" value="TuD/fq09y/ksgzGJRksU68rHhPvB0Z7sBRYJVP41aU0=" type="hidden">              <script>
+                var selectSem = function (seminar_id, name) {
+                    document.location = "/neo/details.php?cid=c31c2578feb67cf4855397eec3175668&send_from_search=1&send_from_search_page=%2Fneo%2Fsem_portal.php%3Fcid%3Dc31c2578feb67cf4855397eec3175668%26keep_result_set%3D1&sem_id=" + seminar_id;
+                };
+              </script>
+                          <input id="search_sem_quick_search_2_realvalue" name="search_sem_quick_search" value="" type="hidden">
+            <input aria-haspopup="true" aria-autocomplete="list" role="textbox" autocomplete="off" title="Nach Veranstaltungen suchen (WS2012/2013)" class="quicksearchbox ui-autocomplete-input" aria-label="Veranstaltungen suchen" id="search_sem_quick_search_2" name="search_sem_quick_search_parameter" placeholder="Veranstaltungen suchen" type="text">
+        <script type="text/javascript" language="javascript">
+            //Die Autovervollständigen-Funktion aktivieren:
+            jQuery(function () {
+                STUDIP.QuickSearch.autocomplete("search_sem_quick_search_2",
+                    "/neo/dispatch.php/quicksearch/response/4bd38e19b87d8ff6d31555a367f0c8b3?cid=c31c2578feb67cf4855397eec3175668",
+                    selectSem,
+                    false                    );
+            });
+        </script>
+<input name="search_sem_1508068a50572e5faff81c27f7b3a72f" value="1" type="hidden">              <input name="search_sem_sem" value="4" type="hidden">
+              <input name="search_sem_qs_choose" value="title_lecturer_number" type="hidden">
+              <input class="quicksearchbutton" src="show-Dateien/search.png" name="search_sem_do_search" value="OK" title="Nach Veranstaltungen suchen (WS2012/2013)" type="image">
+            </form>
+            </li>
+                                                                        <li>
+                    <a href="http://localhost/neo/edit_about.php?view=allgemein">Einstellungen</a>
+                    </li>
+                                                                <li>
+                    <a href="http://docs.studip.de/help/2.3/de/Basis.Allgemeines" target="_blank">Hilfe</a>
+                    </li>
+                                                                <li>
+                    <a href="http://localhost/neo/logout.php">Logout</a>
+                    </li>
+                                                                <li>
+                    <a href="http://www.hfwu.de/" target="_blank">HFWU Webseite</a>
+                    </li>
+                                                </ul>
+    </div>
+</div>
+<!-- Ende Header -->
+
+<!-- Beginn Page -->
+<div id="layout_page">
+
+
+    <div id="layout_container">
+                <button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="upload"><span class="ui-button-text">Excel-Datei hochladen</span></button><button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="copy_semester"><span class="ui-button-text">Semester importieren</span></button>
+<div id="show_table">
+<table border="0" width="100%">
+  <tbody><tr style="background-color: rgb(243, 174, 0);"> <td> Heimat-Semester </td><td> Module  </td><td> VL-Nr </td><td> VL-Name </td><td> SWS </td><td> Art </td><td> Dozent anzeigen </td><td> Verantwortlicher </td><td>  Bearbeiten  </td></tr>
+  </tbody><tbody>
+	      <tr style="" id="show_31a84d03133a81b0d790a49fe3acdba3">
+        <td>AUM 1. Semester</td><td>  &gt; I.1 Produkt- und Preispolitik<br></td><td> AUM1.001.001.V </td><td> AUM 1 I.1.1 Produktpolitik i. d. Automobilwirtschaft (2) </td><td>  </td><td> Vorlesung </td><td>
+            Willi Diez<br>        </td><td> Willi Diez</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('31a84d03133a81b0d790a49fe3acdba3');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('31a84d03133a81b0d790a49fe3acdba3');"></a>
+     </td></tr>
+     <tr style="background-color: rgb(252, 244, 233);" id="show_fb68a336dc046ff8bade340bcbe948ce">
+        <td>AUM 1. Semester</td><td>  &gt; I.1 Produkt- und Preispolitik<br></td><td> AUM1.001.002.V </td><td> AUM 1 I.1.2 Preispolitik i. d. Automobilwirtschaft (2) </td><td>  </td><td> Vorlesung </td><td>
+            Willi Diez<br>        </td><td> Willi Diez</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('fb68a336dc046ff8bade340bcbe948ce');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('fb68a336dc046ff8bade340bcbe948ce');"></a>
+     </td></tr>
+     <tr style="" id="show_81d9f02bad36cac4313a19d8188a2283">
+        <td>AUM 1. Semester</td><td>  &gt; I.2 Entwicklungs- und Produktionsmanagement<br></td><td> AUM1.002.001.V </td><td> AUM 1 I.2.1 Entwicklungsmanagement (2) </td><td>  </td><td> Vorlesung </td><td>
+            Reinhold Bopp<br>        </td><td> Reinhold Bopp</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('81d9f02bad36cac4313a19d8188a2283');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('81d9f02bad36cac4313a19d8188a2283');"></a>
+     </td></tr>
+     <tr style="background-color: rgb(252, 244, 233);" id="show_c8fac750ea3275220da156beaffef161">
+        <td>AUM 1. Semester</td><td>  &gt; I.2 Entwicklungs- und Produktionsmanagement<br></td><td> AUM1.002.002.V </td><td> AUM 1 I.2.2 Produktionsmanagement (2) </td><td>  </td><td> Vorlesung </td><td>
+            Reinhold Bopp<br>        </td><td> Reinhold Bopp</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('c8fac750ea3275220da156beaffef161');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('c8fac750ea3275220da156beaffef161');"></a>
+     </td></tr>
+     <tr style="" id="show_a18a4d8c3c92a88418dca07507ccba9e">
+        <td>AUM 1. Semester</td><td>  &gt; I.3 Kundenbeziehungs- und Dienstleistungsmanagement<br></td><td> AUM1.003.001.V </td><td> AUM 1 I.3.1 Customer Relationship Management (2) </td><td>  </td><td> Vorlesung </td><td>
+            Andreas Baumann<br>        </td><td> Stefan Reindl</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('a18a4d8c3c92a88418dca07507ccba9e');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('a18a4d8c3c92a88418dca07507ccba9e');"></a>
+     </td></tr>
+     <tr style="background-color: rgb(252, 244, 233);" id="show_2bdd905e3c33d7eee09c89b13c8f9278">
+        <td>AUM 1. Semester</td><td>  &gt; I.3 Kundenbeziehungs- und Dienstleistungsmanagement<br></td><td> AUM1.003.002.V </td><td> AUM 1 I.3.2 Finanz- und Mobilitaetsdienstleistungen (2) </td><td>  </td><td> Vorlesung </td><td>
+            Frank Stenner<br>        </td><td> Stefan Reindl</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('2bdd905e3c33d7eee09c89b13c8f9278');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('2bdd905e3c33d7eee09c89b13c8f9278');"></a>
+     </td></tr>
+     <tr style="" id="show_f78d9bba2dec59f0731bf5a926d91477">
+        <td>AUM 1. Semester</td><td>  &gt; I.4 Organisationsentwicklung, Change Management, Qualitaetsmanagement<br></td><td> AUM1.004.001.V </td><td> AUM 1 I.4.1 Qualitaetsmanagement, Management-Review (2) </td><td>  </td><td> Vorlesung </td><td>
+            Reinhold Bopp<br>        </td><td> Gunda Neubauer</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('f78d9bba2dec59f0731bf5a926d91477');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('f78d9bba2dec59f0731bf5a926d91477');"></a>
+     </td></tr>
+     <tr style="background-color: rgb(252, 244, 233);" id="show_ad0372683ca5aa049e34ff986d98d848">
+        <td>AUM 1. Semester</td><td>  &gt; I.4 Organisationsentwicklung, Change Management, Qualitaetsmanagement<br></td><td> AUM1.004.001.V </td><td> AUM 1 I.4.2 Gestaltung von Wandelprozessen, Geschäftsprozessgestaltung, UN-Kommunikation, Inovationsmanagement w (2) </td><td>  </td><td> Vorlesung </td><td>
+            Brigitte Polzin<br>        </td><td> Gunda Neubauer</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('ad0372683ca5aa049e34ff986d98d848');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('ad0372683ca5aa049e34ff986d98d848');"></a>
+     </td></tr>
+     <tr style="" id="show_2f29d3ffa4379711a2af346305eb1b1c">
+        <td>AUM 1. Semester</td><td>  &gt; I.5 Strategisches- und Internationales Management I<br></td><td> AUM1.005.001.V </td><td> AUM 1 I.5.1 Consulting and aspects of Management of Change in complex projects and initiatives  (2) </td><td>  </td><td> Vorlesung </td><td>
+            John Wargin<br>        </td><td> Wolfram Sopha</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('2f29d3ffa4379711a2af346305eb1b1c');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('2f29d3ffa4379711a2af346305eb1b1c');"></a>
+     </td></tr>
+     <tr style="background-color: rgb(252, 244, 233);" id="show_ca278df9dd13564dd07eb393fee0d2b0">
+        <td>AUM 1. Semester</td><td>  &gt; I.5 Strategisches- und Internationales Management I<br></td><td> AUM1.005.002.V </td><td> AUM 1 I.5.2 Internationale Rechnungslegung (2) </td><td>  </td><td> Vorlesung </td><td>
+            Georg Buechele<br>        </td><td> Wolfram Sopha</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('ca278df9dd13564dd07eb393fee0d2b0');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('ca278df9dd13564dd07eb393fee0d2b0');"></a>
+     </td></tr>
+     <tr style="" id="show_c939535a26e2d9527aad04686a47d0d2">
+        <td>AUM 1. Semester</td><td>  &gt; Sondertermine<br></td><td> ERB1.000.037.V </td><td> AUM 1 Sondertermine </td><td>  </td><td> Uebung </td><td>
+            G. Geislingen Dozententeam<br>        </td><td> Volkmar Klatte</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('c939535a26e2d9527aad04686a47d0d2');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('c939535a26e2d9527aad04686a47d0d2');"></a>
+     </td></tr>
+     <tr style="background-color: rgb(252, 244, 233);" id="show_0f60384805a23228edf2c3f7465075db">
+        <td>AUM 1. Semester</td><td>  &gt; I.6 Fuehrung<br></td><td> UF1.002.011.V </td><td>
+ Veranstaltung nicht abonnieren! UF 1 2.1.1 / AUM 1 I.6.1 
+Fuehrungsmodelle, leistungs- und innovationsfoerdernde Anreizsysteme 
+(UF+AUM) (2) </td><td>  </td><td> Vorlesung </td><td>
+            G. Geislingen N.N.<br>        </td><td> Heidemarie Seel</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('0f60384805a23228edf2c3f7465075db');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('0f60384805a23228edf2c3f7465075db');"></a>
+     </td></tr>
+     <tr style="" id="show_6794a2ac02311ea814711e8c8d31d9a7">
+        <td>AUM 1. Semester</td><td>  &gt; I.6 Fuehrung<br></td><td> UF1.002.012.V </td><td> Veranstaltung nicht abonnieren! UF 1 2.1.2 / AUM 1 I.6.2 Gruppenmanagement, Fuehrung kulturell gemischter Teams (UF+AUM) (2) </td><td>  </td><td> Vorlesung </td><td>
+            G. Geislingen N.N.<br>        </td><td> Heidemarie Seel</td><td>
+        <a href="#"><img src="show-Dateien/edit.png" id="show_vl_edit" onclick="toggleEdit('6794a2ac02311ea814711e8c8d31d9a7');"></a>
+        <a href="#"><img src="show-Dateien/delete.png" id="show_vl_delete" onclick="delVl('6794a2ac02311ea814711e8c8d31d9a7');"></a>
+     </td></tr>
+ 
+	 </tbody></table>
+
+<div class="text">Durch das Klicken auf "Vorlesungen erstellen" werden die Veranstaltungen angelegt <br>
+<button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="vl_erstellen"><span class="ui-button-text">Vorlesungen erstellen</span></button><button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="vl_loeschen"><span class="ui-button-text">alle Vorlesungen löschen</span></button>
+</div>
+
+
+<div id="edit_form">
+    Bitte nehmen Sie die Änderungen vor. Erst nach dem Speichern der Daten werden sind diese im System.
+    <div><input id="edit_uid" type=""></div>
+    <div>Nr der Vorlesung: <input id="edit_vl_nr" type=""></div>
+    <div>Name der Vorlesung: <input id="edit_vl_name" type=""></div>
+    <div>Art der Vorlesung:
+        <select name="edit_vl_art" size="1" id="edit_vl_art" class="styled-select">
+            <option selected="selected" value="1" id="edit_vl_art_0">Vorlesung</option>
+            <option value="2" id="edit_vl_art_1">Seminar</option>
+            <option value="3" id="edit_vl_art_2">Uebung</option>
+            <option value="4" id="edit_vl_art_3">Praktikum</option>
+            <option value="5" id="edit_vl_art_4">Colloquium</option>
+            <option value="6" id="edit_vl_art_5">Projekt</option>
+            <option value="7" id="edit_vl_art_6">Exkursion</option>
+        </select>
+    <div>SWS der Vorlesung: <input id="edit_vl_sws" type=""></div>
+    <div> Heimatsemester: <br>
+
+        <select name="edit_vl_heimat" size="5" id="edit_vl_heimat">
+                    <option value="548b3e8fcf73b3aebd75421f2447c557">AAT 1. Semester</option>
+                    <option value="464ccc15f5a91b8273e1ff0ac9737630">AAT 2. Semester</option>
+                    <option value="4ed66c2680e87d6880ecf9a87a2b4906">AAT 3. Semester</option>
+                    <option value="4ec2bbacad6311ca68de5476fd93c21b">AUM 1. Semester</option>
+                    <option value="7dda96a2eb4b5517e0892cca0ee78941">AUM 2. Semester</option>
+                    <option value="ec63f307814a8319f3905f550e0fc2c9">AUM 3. Semester</option>
+                    <option value="4d363bdf436c0e3fadca22517731ae36">AUW 1. Semester</option>
+                    <option value="1ddcb88a8b5df36d0abf7166010a561c">AUW 2. Semester</option>
+                    <option value="8f2dd467f76c59efe505847a78ef00da">AUW 3. Semester</option>
+                    <option value="78c1d8fcdb3ebb237cd0f35edadfb164">AUW 4. Semester</option>
+                    <option value="1b14a13f341144e0f09131743b7ce5ce">AUW 5. Semester</option>
+                    <option value="c69984283752fd655d319babb4fe05c8">AUW 6./7. Semester</option>
+                    <option value="908e17246ce625532269165add9b1b54">AW 1. Semester</option>
+                    <option value="2d887777773ea3bb42f8ead88b4d4f93">AW 2. Semester</option>
+                    <option value="391268c89ed1dcfa0c389c68097ff316">AW 3. Semester</option>
+                    <option value="913d788bd6c01d9ab0e937e191c7ae97">AW 4. Semester</option>
+                    <option value="95368137632d3ce163b0c3fbdf59ad47">AW 5.  Semester</option>
+                    <option value="eb2043a0789d5cc5eeda1fa05bfadf89">AW 6. Semester</option>
+                    <option value="2e69669edefb71a8fc0f43cb6e02ef5f">AW 7.  Semester</option>
+                    <option value="9ce78aec995002a8d3aa96d48c4fec20">BW 1. Semester</option>
+                    <option value="85b4012b821b652bc0580fd41f658181">BW 2. Semester</option>
+                    <option value="aa48a20d718d1c37d06cd7a1f9800556">BW 3. Semester</option>
+                    <option value="688aaabb5daf53e6d4c3f560c32b079b">BW 4. Semester</option>
+                    <option value="f038d75c78ad0a21a3bdbbc19476b90f">BW 5. Semester</option>
+                    <option value="5f9d3871c003ba6c64e83619b8df03a4">BW 6./7. Semester</option>
+                    <option value="38d411664a5c04000d2ed540604cf137">ERM 1. Semester</option>
+                    <option value="f4999fde1f73795509c7bcf8e1af837b">ERM 2. Semester</option>
+                    <option value="0451aadcaf2034f26aec67fd19474e99">ERM 3. Semester</option>
+                    <option value="4b7e6a78d62449dc459d990a67a1a448">ERM 4. Semester</option>
+                    <option value="81b89082e136e8b4426fd4ee308ec3c8">ERM 5. Semester</option>
+                    <option value="98f5fd978ae80819d0e2afedd53d245d">ERM 6. Semester</option>
+                    <option value="ad00be1175911b19e398d8877d6bcebf">ERM 6/7. Semester</option>
+                    <option value="b67b2c8bb5f510e30ae5359496b9d2af">ERM 7. Semester</option>
+                    <option value="af139b7b357edc186082c868ba5b36a7">GTM 1. Semester</option>
+                    <option value="6f5b5aa2d4a6ce847397c47ab9888011">GTM 2. Semester</option>
+                    <option value="27ab0b2ebaf034b664fd7ade88847430">GTM 3. Semester</option>
+                    <option value="95e9cc364c10925c08cb7f1d015d3505">GTM 4. Semester</option>
+                    <option value="5f8ba371d85fc6f1ace6d476e1f3bd30">GTM 5. Semester</option>
+                    <option value="0f90ebec1cd76c4c20fd314336e38584">GTM 6. Semester</option>
+                    <option value="f3b15ef985d649a76f4c25b551ac9eeb">GTM 7. Semester</option>
+                    <option value="947b04af3eb3f9c1033600a7e101c341">IFB 1. Semester</option>
+                    <option value="6f394ed7cfeaac0540fc6a5ce1144a37">IFB 2. Semester</option>
+                    <option value="c2362f5b03ebc0bc711e983ca3983a9f">IFB 5. Semester</option>
+                    <option value="64e450f0822a3bc43cb3676de4f14aa3">IFB 6. Semester</option>
+                    <option value="04084c8b5c0df59821246029beeb8e1f">IFB 7. Semester</option>
+                    <option value="2f70801cdbd9365c20270ce717fad5fd">IFM 1. Semester</option>
+                    <option value="ed0128d574cd4bc1560215ea04c349eb">IFM 2. Semester</option>
+                    <option value="0cfb5060f7ef3375f97891c3154a3a0c">IM 1. Semester</option>
+                    <option value="d0a9976a14db8b6b7b64c3a2278f263b">IM 2. Semester</option>
+                    <option value="8f17db27c5a003a3f83fa065c606528b">IM 3. Semester</option>
+                    <option value="2f52083239ae4648f26dd8c18b539d5f">IMLA 1. Semester</option>
+                    <option value="d479866c75ded3ba4f661f0a6cab1a87">IMMOB 1. Semester</option>
+                    <option value="ae1dc9fb5c5238f008b22f2349d65f8c">IMMOB 2. Semester</option>
+                    <option value="67bd87dd4d2adfc94017008feada3ee9">IMMOB 3. Semester</option>
+                    <option value="430c6a533d350ea21b3514e819e46807">IMMOB 4. Semester</option>
+                    <option value="82bf5d359d2d8bd676c8590a666448c1">IMMOB 5. Semester</option>
+                    <option value="d515f8eb53a59e6c36c794b195475b7d">IMMOB 6. Semester</option>
+                    <option value="6f646f408c0cdee7c6481cd1205fb1f1">IMMOB 7. Semester</option>
+                    <option value="11fba57db4354d5184a62684a3d27097">IMMOM 1. Semester</option>
+                    <option value="589b2fe14d39b99bb2e318818280f38c">IMMOM 2. Semester</option>
+                    <option value="1716378bd78fcb00c4bcb9e759f601cc">IMMOM 3. Semester</option>
+                    <option value="fa41a6506a8d81f0f54647e28a05c32e">LA 1. Semester</option>
+                    <option value="0ebedc92d03e9c401128f1df3e737d00">LA 2. Semester</option>
+                    <option value="d7b8969325b781446331ef3b555d8605">LA 3. Semester</option>
+                    <option value="951794e7fa01de503eb76546dd08b953">LA 4. Semester</option>
+                    <option value="ab5db1eb6053f1c3300a5f5fc7a9b192">LA 5. Semester</option>
+                    <option value="6c33be4c674a80be64bca7d7bfe42dc0">LA 6. Semester</option>
+                    <option value="ddfe88e8d7abef5db488ec93a7086d97">LA 7. Semester</option>
+                    <option value="0d937d775816d989c535e0f532a82d1a">LPN 1. Semester</option>
+                    <option value="d9da70568e5e24236a4c9cdcb5487b08">LPN 2. Semester</option>
+                    <option value="57a08afb3011918206d7964fb32bdf50">LPN 3. Semester</option>
+                    <option value="5f662ba704342a814b6491aaecb6d264">LPN 4. Semester</option>
+                    <option value="e7ca0312184253021f3aea455c8a5bcf">LPN 5. Semester</option>
+                    <option value="c0366640d6969071c02cf8d022c70301">LPN 6. Semester</option>
+                    <option value="0cfdb037168a786da436093c618eccdf">LPN 7. Semester</option>
+                    <option value="5493ba881afa9753cd4512ee3e18070d">NPM 1. Semester</option>
+                    <option value="29af7a0a6971191fdbf0ff60ca4b2a77">NPM 2. Semester</option>
+                    <option value="bea338026da0b283917e792c9871587b">NPM 3. Semester</option>
+                    <option value="d2acb6cb337f7399d2728f627c91c726">NPM 4. Semester</option>
+                    <option value="069bd9629fb57d58e117eb77a6ee6a3a">NPM 5. Semester</option>
+                    <option value="a9920e21f6a311bd0c3ba1bc62633f5c">NPM 6./7. Semester</option>
+                    <option value="af11116958bf0189355c55c69c7b5b99">PW 1. Semester</option>
+                    <option value="36bfe0907b170604303ea77609c5a5b2">PW 2. Semester</option>
+                    <option value="129bd7e06f8c7bf4dd17c817dda9ddca">PW 3. Semester</option>
+                    <option value="870dcb391c237936b47c9cd922412ae1">PW 4. Semester</option>
+                    <option value="836c63e6151ce00348b4aa17351fd053">PW 5. Semester</option>
+                    <option value="953ea459c83be77a70409d38d98c13dc">PW 6. Semester</option>
+                    <option value="e6241780befb8a0fed1ac0414db2c76a">PW 7. Semester</option>
+                    <option value="f29fbe310446414e764dd83e16316bcd">PzM 1. Semester</option>
+                    <option value="04508e13843991cb204a69169bd896b8">PzM 2. Semester</option>
+                    <option value="bc3eb0bb772738bdf7465dd68093121e">PzM 3. Semester</option>
+                    <option value="239e44fd661cc0205e02cc30a83f12bc">PzM 4. Semester</option>
+                    <option value="9b23b9a7449737e532c2174fe833eda8">SP 1. Semester</option>
+                    <option value="435c30a6a55ffc2b69abcb3d5905e085">SP 2. Semester</option>
+                    <option value="cf947cb3348187b3f6ebadb8132c55a3">SP 3. Semester</option>
+                    <option value="eac5911fd5b0efc72f09b39957a77811">SP 4. Semester</option>
+                    <option value="af374eb2155fb7138059522685a39245">SP 5. Semester</option>
+                    <option value="e943d722890a56e6964c43b671f6bd54">SP 6. Semester</option>
+                    <option value="2aeba2dfdcc54dad1e5c46d11a28d338">SP 7. Semester</option>
+                    <option value="ae236ff2369dbba2bf61638caac342fd">UF 1. Semester</option>
+                    <option value="5561a253c8d2f89a4d260c5186c9b367">UF 2. Semester</option>
+                    <option value="5720c6b28f2f67bbcca8402a597d831c">UF 3. Semester</option>
+                    <option value="436b71e9a7bf2a2255a06abb6a51d842">URI 1. Semester</option>
+                    <option value="053b6b61731ffaca2801d1162bb5167b">URI 2. Semester</option>
+                    <option value="4f5f43dc209aac41edbe5d4170850b7d">URI 3. Semester</option>
+                    <option value="2b7dd716fa23ebd8764fc2b4e4e5ce3c">UW 1. Semester</option>
+                    <option value="0a7722c8ece442b604f30e0f874ed9b5">UW 2. Semester</option>
+                    <option value="3c7aa5809c8dd8670dafdbcdba6d0237">UW 2/3. Semester</option>
+                    <option value="7167c7c7c2089fb598340439f68c218c">UW 4. Semester</option>
+                    <option value="1a0726602c4780b0bcd6589cda8b153d">VWL 1. Semester</option>
+                    <option value="dde9bd5645b5af0de219a530e846216d">VWL 2. Semester</option>
+                    <option value="a1aa679ff46e761618035a48a8d5a9f8">VWL 3. Semester</option>
+                    <option value="d17258232c210316676b16694ebabd61">VWL 4. Semester</option>
+                    <option value="fc540dede25939d1e4e2aa49ca598ea8">VWL 5. Semester</option>
+                    <option value="f11cda62690b12ae6dde27583895312a">VWL 6. Semester</option>
+                    <option value="2aef8b4e203224dcfc5e03c7e4fa546f">VWL 7. Semester</option>
+                    <option value="c4f26900fc3e9a06330d4df0a469a9ea">WR 1. Semester</option>
+                    <option value="06106632cc70499e6cb8d57250bdcc73">WR 2. Semester</option>
+                    <option value="26d28986a4c67f8d18e6921652a3874e">WR 3. Semester</option>
+                    <option value="e7164b69fd6d1834b99cd6a15bbcf517">WR 4. Semester</option>
+                    <option value="240d2b4779324c57a334a8faee3c7a31">WR 5. Semester</option>
+                    <option value="67a71c9dcc7d829168914960a2e6bba0">WR 6. Semester</option>
+                    <option value="9508d2e8b2f52da1dc0e6307fa3f4eb5">WR 7. Semester</option>
+                </select>
+        <div id="edit_vl_heimat_name"></div>
+        <div>Modul Verantwortlicher <input id="edit_vl_verName" type=""> (Keine Umlaute)</div>
+    </div>
+</div>
+</div>
+
+
+<div id="edit_dozenten">
+    Bitte nehmen Sie die Änderungen vor. Erst nach dem Speichern der Daten werden sind diese im System.
+    <div><input id="edit_dozent_uid" type=""></div>
+
+        <div id="dozenten_der_vl">
+
+        </div>
+
+
+    <strong>Neuen Dozenten Eintragen</strong>
+                <input id="dozent_id_1_realvalue" name="dozent_id" value="" type="hidden">
+            <input aria-haspopup="true" aria-autocomplete="list" role="textbox" autocomplete="off" class="ui-autocomplete-input" aria-label="Nach Dozenten suchen" id="dozent_id_1" name="dozent_id_parameter" placeholder="Nach Dozenten suchen" type="text">
+        <script type="text/javascript" language="javascript">
+            //Die Autovervollständigen-Funktion aktivieren:
+            jQuery(function () {
+                STUDIP.QuickSearch.autocomplete("dozent_id_1",
+                    "/neo/dispatch.php/quicksearch/response/a3d1b493c5124261bba742031e38999e?cid=c31c2578feb67cf4855397eec3175668",
+                    null,
+                    false                    );
+            });
+        </script>
+    <button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="add_new_dozent"><span class="ui-button-text">Dozent Eintragen</span></button>
+</div>
+
+<div id="edit_module">
+    <div class="notHere"><input id="edit_modul_uid" type=""><input id="edit_modul_home" type=""></div>
+    Vorlesung ist in folgenden Modulen<br>
+    <div id="edit_module_moduleDerVl">
+
+    </div>
+
+    <br>
+    <strong>Mit neuem Modul verbinden</strong> <br>
+    Mit Vorhanden Modul verbinden: <br>
+
+    <div id="edit_module_vorhanden_heimat">In der Heimateinrichtung
+
+    </div>
+
+    <div id="edit_module_vorhanden_andSemester">In einem anderen Semester: <br>
+        <select name="edit_vl_heimat" size="5" id="edit_module_vorhanden_andSemester_auswahl">
+                    <option value="548b3e8fcf73b3aebd75421f2447c557">AAT 1. Semester</option>
+                    <option value="464ccc15f5a91b8273e1ff0ac9737630">AAT 2. Semester</option>
+                    <option value="4ed66c2680e87d6880ecf9a87a2b4906">AAT 3. Semester</option>
+                    <option value="4ec2bbacad6311ca68de5476fd93c21b">AUM 1. Semester</option>
+                    <option value="7dda96a2eb4b5517e0892cca0ee78941">AUM 2. Semester</option>
+                    <option value="ec63f307814a8319f3905f550e0fc2c9">AUM 3. Semester</option>
+                    <option value="4d363bdf436c0e3fadca22517731ae36">AUW 1. Semester</option>
+                    <option value="1ddcb88a8b5df36d0abf7166010a561c">AUW 2. Semester</option>
+                    <option value="8f2dd467f76c59efe505847a78ef00da">AUW 3. Semester</option>
+                    <option value="78c1d8fcdb3ebb237cd0f35edadfb164">AUW 4. Semester</option>
+                    <option value="1b14a13f341144e0f09131743b7ce5ce">AUW 5. Semester</option>
+                    <option value="c69984283752fd655d319babb4fe05c8">AUW 6./7. Semester</option>
+                    <option value="908e17246ce625532269165add9b1b54">AW 1. Semester</option>
+                    <option value="2d887777773ea3bb42f8ead88b4d4f93">AW 2. Semester</option>
+                    <option value="391268c89ed1dcfa0c389c68097ff316">AW 3. Semester</option>
+                    <option value="913d788bd6c01d9ab0e937e191c7ae97">AW 4. Semester</option>
+                    <option value="95368137632d3ce163b0c3fbdf59ad47">AW 5.  Semester</option>
+                    <option value="eb2043a0789d5cc5eeda1fa05bfadf89">AW 6. Semester</option>
+                    <option value="2e69669edefb71a8fc0f43cb6e02ef5f">AW 7.  Semester</option>
+                    <option value="9ce78aec995002a8d3aa96d48c4fec20">BW 1. Semester</option>
+                    <option value="85b4012b821b652bc0580fd41f658181">BW 2. Semester</option>
+                    <option value="aa48a20d718d1c37d06cd7a1f9800556">BW 3. Semester</option>
+                    <option value="688aaabb5daf53e6d4c3f560c32b079b">BW 4. Semester</option>
+                    <option value="f038d75c78ad0a21a3bdbbc19476b90f">BW 5. Semester</option>
+                    <option value="5f9d3871c003ba6c64e83619b8df03a4">BW 6./7. Semester</option>
+                    <option value="38d411664a5c04000d2ed540604cf137">ERM 1. Semester</option>
+                    <option value="f4999fde1f73795509c7bcf8e1af837b">ERM 2. Semester</option>
+                    <option value="0451aadcaf2034f26aec67fd19474e99">ERM 3. Semester</option>
+                    <option value="4b7e6a78d62449dc459d990a67a1a448">ERM 4. Semester</option>
+                    <option value="81b89082e136e8b4426fd4ee308ec3c8">ERM 5. Semester</option>
+                    <option value="98f5fd978ae80819d0e2afedd53d245d">ERM 6. Semester</option>
+                    <option value="ad00be1175911b19e398d8877d6bcebf">ERM 6/7. Semester</option>
+                    <option value="b67b2c8bb5f510e30ae5359496b9d2af">ERM 7. Semester</option>
+                    <option value="af139b7b357edc186082c868ba5b36a7">GTM 1. Semester</option>
+                    <option value="6f5b5aa2d4a6ce847397c47ab9888011">GTM 2. Semester</option>
+                    <option value="27ab0b2ebaf034b664fd7ade88847430">GTM 3. Semester</option>
+                    <option value="95e9cc364c10925c08cb7f1d015d3505">GTM 4. Semester</option>
+                    <option value="5f8ba371d85fc6f1ace6d476e1f3bd30">GTM 5. Semester</option>
+                    <option value="0f90ebec1cd76c4c20fd314336e38584">GTM 6. Semester</option>
+                    <option value="f3b15ef985d649a76f4c25b551ac9eeb">GTM 7. Semester</option>
+                    <option value="947b04af3eb3f9c1033600a7e101c341">IFB 1. Semester</option>
+                    <option value="6f394ed7cfeaac0540fc6a5ce1144a37">IFB 2. Semester</option>
+                    <option value="c2362f5b03ebc0bc711e983ca3983a9f">IFB 5. Semester</option>
+                    <option value="64e450f0822a3bc43cb3676de4f14aa3">IFB 6. Semester</option>
+                    <option value="04084c8b5c0df59821246029beeb8e1f">IFB 7. Semester</option>
+                    <option value="2f70801cdbd9365c20270ce717fad5fd">IFM 1. Semester</option>
+                    <option value="ed0128d574cd4bc1560215ea04c349eb">IFM 2. Semester</option>
+                    <option value="0cfb5060f7ef3375f97891c3154a3a0c">IM 1. Semester</option>
+                    <option value="d0a9976a14db8b6b7b64c3a2278f263b">IM 2. Semester</option>
+                    <option value="8f17db27c5a003a3f83fa065c606528b">IM 3. Semester</option>
+                    <option value="2f52083239ae4648f26dd8c18b539d5f">IMLA 1. Semester</option>
+                    <option value="d479866c75ded3ba4f661f0a6cab1a87">IMMOB 1. Semester</option>
+                    <option value="ae1dc9fb5c5238f008b22f2349d65f8c">IMMOB 2. Semester</option>
+                    <option value="67bd87dd4d2adfc94017008feada3ee9">IMMOB 3. Semester</option>
+                    <option value="430c6a533d350ea21b3514e819e46807">IMMOB 4. Semester</option>
+                    <option value="82bf5d359d2d8bd676c8590a666448c1">IMMOB 5. Semester</option>
+                    <option value="d515f8eb53a59e6c36c794b195475b7d">IMMOB 6. Semester</option>
+                    <option value="6f646f408c0cdee7c6481cd1205fb1f1">IMMOB 7. Semester</option>
+                    <option value="11fba57db4354d5184a62684a3d27097">IMMOM 1. Semester</option>
+                    <option value="589b2fe14d39b99bb2e318818280f38c">IMMOM 2. Semester</option>
+                    <option value="1716378bd78fcb00c4bcb9e759f601cc">IMMOM 3. Semester</option>
+                    <option value="fa41a6506a8d81f0f54647e28a05c32e">LA 1. Semester</option>
+                    <option value="0ebedc92d03e9c401128f1df3e737d00">LA 2. Semester</option>
+                    <option value="d7b8969325b781446331ef3b555d8605">LA 3. Semester</option>
+                    <option value="951794e7fa01de503eb76546dd08b953">LA 4. Semester</option>
+                    <option value="ab5db1eb6053f1c3300a5f5fc7a9b192">LA 5. Semester</option>
+                    <option value="6c33be4c674a80be64bca7d7bfe42dc0">LA 6. Semester</option>
+                    <option value="ddfe88e8d7abef5db488ec93a7086d97">LA 7. Semester</option>
+                    <option value="0d937d775816d989c535e0f532a82d1a">LPN 1. Semester</option>
+                    <option value="d9da70568e5e24236a4c9cdcb5487b08">LPN 2. Semester</option>
+                    <option value="57a08afb3011918206d7964fb32bdf50">LPN 3. Semester</option>
+                    <option value="5f662ba704342a814b6491aaecb6d264">LPN 4. Semester</option>
+                    <option value="e7ca0312184253021f3aea455c8a5bcf">LPN 5. Semester</option>
+                    <option value="c0366640d6969071c02cf8d022c70301">LPN 6. Semester</option>
+                    <option value="0cfdb037168a786da436093c618eccdf">LPN 7. Semester</option>
+                    <option value="5493ba881afa9753cd4512ee3e18070d">NPM 1. Semester</option>
+                    <option value="29af7a0a6971191fdbf0ff60ca4b2a77">NPM 2. Semester</option>
+                    <option value="bea338026da0b283917e792c9871587b">NPM 3. Semester</option>
+                    <option value="d2acb6cb337f7399d2728f627c91c726">NPM 4. Semester</option>
+                    <option value="069bd9629fb57d58e117eb77a6ee6a3a">NPM 5. Semester</option>
+                    <option value="a9920e21f6a311bd0c3ba1bc62633f5c">NPM 6./7. Semester</option>
+                    <option value="af11116958bf0189355c55c69c7b5b99">PW 1. Semester</option>
+                    <option value="36bfe0907b170604303ea77609c5a5b2">PW 2. Semester</option>
+                    <option value="129bd7e06f8c7bf4dd17c817dda9ddca">PW 3. Semester</option>
+                    <option value="870dcb391c237936b47c9cd922412ae1">PW 4. Semester</option>
+                    <option value="836c63e6151ce00348b4aa17351fd053">PW 5. Semester</option>
+                    <option value="953ea459c83be77a70409d38d98c13dc">PW 6. Semester</option>
+                    <option value="e6241780befb8a0fed1ac0414db2c76a">PW 7. Semester</option>
+                    <option value="f29fbe310446414e764dd83e16316bcd">PzM 1. Semester</option>
+                    <option value="04508e13843991cb204a69169bd896b8">PzM 2. Semester</option>
+                    <option value="bc3eb0bb772738bdf7465dd68093121e">PzM 3. Semester</option>
+                    <option value="239e44fd661cc0205e02cc30a83f12bc">PzM 4. Semester</option>
+                    <option value="9b23b9a7449737e532c2174fe833eda8">SP 1. Semester</option>
+                    <option value="435c30a6a55ffc2b69abcb3d5905e085">SP 2. Semester</option>
+                    <option value="cf947cb3348187b3f6ebadb8132c55a3">SP 3. Semester</option>
+                    <option value="eac5911fd5b0efc72f09b39957a77811">SP 4. Semester</option>
+                    <option value="af374eb2155fb7138059522685a39245">SP 5. Semester</option>
+                    <option value="e943d722890a56e6964c43b671f6bd54">SP 6. Semester</option>
+                    <option value="2aeba2dfdcc54dad1e5c46d11a28d338">SP 7. Semester</option>
+                    <option value="ae236ff2369dbba2bf61638caac342fd">UF 1. Semester</option>
+                    <option value="5561a253c8d2f89a4d260c5186c9b367">UF 2. Semester</option>
+                    <option value="5720c6b28f2f67bbcca8402a597d831c">UF 3. Semester</option>
+                    <option value="436b71e9a7bf2a2255a06abb6a51d842">URI 1. Semester</option>
+                    <option value="053b6b61731ffaca2801d1162bb5167b">URI 2. Semester</option>
+                    <option value="4f5f43dc209aac41edbe5d4170850b7d">URI 3. Semester</option>
+                    <option value="2b7dd716fa23ebd8764fc2b4e4e5ce3c">UW 1. Semester</option>
+                    <option value="0a7722c8ece442b604f30e0f874ed9b5">UW 2. Semester</option>
+                    <option value="3c7aa5809c8dd8670dafdbcdba6d0237">UW 2/3. Semester</option>
+                    <option value="7167c7c7c2089fb598340439f68c218c">UW 4. Semester</option>
+                    <option value="1a0726602c4780b0bcd6589cda8b153d">VWL 1. Semester</option>
+                    <option value="dde9bd5645b5af0de219a530e846216d">VWL 2. Semester</option>
+                    <option value="a1aa679ff46e761618035a48a8d5a9f8">VWL 3. Semester</option>
+                    <option value="d17258232c210316676b16694ebabd61">VWL 4. Semester</option>
+                    <option value="fc540dede25939d1e4e2aa49ca598ea8">VWL 5. Semester</option>
+                    <option value="f11cda62690b12ae6dde27583895312a">VWL 6. Semester</option>
+                    <option value="2aef8b4e203224dcfc5e03c7e4fa546f">VWL 7. Semester</option>
+                    <option value="c4f26900fc3e9a06330d4df0a469a9ea">WR 1. Semester</option>
+                    <option value="06106632cc70499e6cb8d57250bdcc73">WR 2. Semester</option>
+                    <option value="26d28986a4c67f8d18e6921652a3874e">WR 3. Semester</option>
+                    <option value="e7164b69fd6d1834b99cd6a15bbcf517">WR 4. Semester</option>
+                    <option value="240d2b4779324c57a334a8faee3c7a31">WR 5. Semester</option>
+                    <option value="67a71c9dcc7d829168914960a2e6bba0">WR 6. Semester</option>
+                    <option value="9508d2e8b2f52da1dc0e6307fa3f4eb5">WR 7. Semester</option>
+            </select></div>
+    <br>
+
+    <select name="edit_vl_heimat" size="5" id="edit_module_all">
+
+    </select>
+    <br>
+    <h2>Neues Modul erstellen</h2> <br>
+    <div id="edit_module_neu_heimat"><h3>In der Heimateinrichtung erstellen: </h3><br>
+    </div>
+    <br>
+    <div id="edit_module_neu_andSemester"><h3>In einem anderen Semester: </h3><br>
+        <select name="edit_vl_heimat" size="5" id="edit_module_neu_andSemester_auswahl">
+                    <option value="548b3e8fcf73b3aebd75421f2447c557">AAT 1. Semester</option>
+                    <option value="464ccc15f5a91b8273e1ff0ac9737630">AAT 2. Semester</option>
+                    <option value="4ed66c2680e87d6880ecf9a87a2b4906">AAT 3. Semester</option>
+                    <option value="4ec2bbacad6311ca68de5476fd93c21b">AUM 1. Semester</option>
+                    <option value="7dda96a2eb4b5517e0892cca0ee78941">AUM 2. Semester</option>
+                    <option value="ec63f307814a8319f3905f550e0fc2c9">AUM 3. Semester</option>
+                    <option value="4d363bdf436c0e3fadca22517731ae36">AUW 1. Semester</option>
+                    <option value="1ddcb88a8b5df36d0abf7166010a561c">AUW 2. Semester</option>
+                    <option value="8f2dd467f76c59efe505847a78ef00da">AUW 3. Semester</option>
+                    <option value="78c1d8fcdb3ebb237cd0f35edadfb164">AUW 4. Semester</option>
+                    <option value="1b14a13f341144e0f09131743b7ce5ce">AUW 5. Semester</option>
+                    <option value="c69984283752fd655d319babb4fe05c8">AUW 6./7. Semester</option>
+                    <option value="908e17246ce625532269165add9b1b54">AW 1. Semester</option>
+                    <option value="2d887777773ea3bb42f8ead88b4d4f93">AW 2. Semester</option>
+                    <option value="391268c89ed1dcfa0c389c68097ff316">AW 3. Semester</option>
+                    <option value="913d788bd6c01d9ab0e937e191c7ae97">AW 4. Semester</option>
+                    <option value="95368137632d3ce163b0c3fbdf59ad47">AW 5.  Semester</option>
+                    <option value="eb2043a0789d5cc5eeda1fa05bfadf89">AW 6. Semester</option>
+                    <option value="2e69669edefb71a8fc0f43cb6e02ef5f">AW 7.  Semester</option>
+                    <option value="9ce78aec995002a8d3aa96d48c4fec20">BW 1. Semester</option>
+                    <option value="85b4012b821b652bc0580fd41f658181">BW 2. Semester</option>
+                    <option value="aa48a20d718d1c37d06cd7a1f9800556">BW 3. Semester</option>
+                    <option value="688aaabb5daf53e6d4c3f560c32b079b">BW 4. Semester</option>
+                    <option value="f038d75c78ad0a21a3bdbbc19476b90f">BW 5. Semester</option>
+                    <option value="5f9d3871c003ba6c64e83619b8df03a4">BW 6./7. Semester</option>
+                    <option value="38d411664a5c04000d2ed540604cf137">ERM 1. Semester</option>
+                    <option value="f4999fde1f73795509c7bcf8e1af837b">ERM 2. Semester</option>
+                    <option value="0451aadcaf2034f26aec67fd19474e99">ERM 3. Semester</option>
+                    <option value="4b7e6a78d62449dc459d990a67a1a448">ERM 4. Semester</option>
+                    <option value="81b89082e136e8b4426fd4ee308ec3c8">ERM 5. Semester</option>
+                    <option value="98f5fd978ae80819d0e2afedd53d245d">ERM 6. Semester</option>
+                    <option value="ad00be1175911b19e398d8877d6bcebf">ERM 6/7. Semester</option>
+                    <option value="b67b2c8bb5f510e30ae5359496b9d2af">ERM 7. Semester</option>
+                    <option value="af139b7b357edc186082c868ba5b36a7">GTM 1. Semester</option>
+                    <option value="6f5b5aa2d4a6ce847397c47ab9888011">GTM 2. Semester</option>
+                    <option value="27ab0b2ebaf034b664fd7ade88847430">GTM 3. Semester</option>
+                    <option value="95e9cc364c10925c08cb7f1d015d3505">GTM 4. Semester</option>
+                    <option value="5f8ba371d85fc6f1ace6d476e1f3bd30">GTM 5. Semester</option>
+                    <option value="0f90ebec1cd76c4c20fd314336e38584">GTM 6. Semester</option>
+                    <option value="f3b15ef985d649a76f4c25b551ac9eeb">GTM 7. Semester</option>
+                    <option value="947b04af3eb3f9c1033600a7e101c341">IFB 1. Semester</option>
+                    <option value="6f394ed7cfeaac0540fc6a5ce1144a37">IFB 2. Semester</option>
+                    <option value="c2362f5b03ebc0bc711e983ca3983a9f">IFB 5. Semester</option>
+                    <option value="64e450f0822a3bc43cb3676de4f14aa3">IFB 6. Semester</option>
+                    <option value="04084c8b5c0df59821246029beeb8e1f">IFB 7. Semester</option>
+                    <option value="2f70801cdbd9365c20270ce717fad5fd">IFM 1. Semester</option>
+                    <option value="ed0128d574cd4bc1560215ea04c349eb">IFM 2. Semester</option>
+                    <option value="0cfb5060f7ef3375f97891c3154a3a0c">IM 1. Semester</option>
+                    <option value="d0a9976a14db8b6b7b64c3a2278f263b">IM 2. Semester</option>
+                    <option value="8f17db27c5a003a3f83fa065c606528b">IM 3. Semester</option>
+                    <option value="2f52083239ae4648f26dd8c18b539d5f">IMLA 1. Semester</option>
+                    <option value="d479866c75ded3ba4f661f0a6cab1a87">IMMOB 1. Semester</option>
+                    <option value="ae1dc9fb5c5238f008b22f2349d65f8c">IMMOB 2. Semester</option>
+                    <option value="67bd87dd4d2adfc94017008feada3ee9">IMMOB 3. Semester</option>
+                    <option value="430c6a533d350ea21b3514e819e46807">IMMOB 4. Semester</option>
+                    <option value="82bf5d359d2d8bd676c8590a666448c1">IMMOB 5. Semester</option>
+                    <option value="d515f8eb53a59e6c36c794b195475b7d">IMMOB 6. Semester</option>
+                    <option value="6f646f408c0cdee7c6481cd1205fb1f1">IMMOB 7. Semester</option>
+                    <option value="11fba57db4354d5184a62684a3d27097">IMMOM 1. Semester</option>
+                    <option value="589b2fe14d39b99bb2e318818280f38c">IMMOM 2. Semester</option>
+                    <option value="1716378bd78fcb00c4bcb9e759f601cc">IMMOM 3. Semester</option>
+                    <option value="fa41a6506a8d81f0f54647e28a05c32e">LA 1. Semester</option>
+                    <option value="0ebedc92d03e9c401128f1df3e737d00">LA 2. Semester</option>
+                    <option value="d7b8969325b781446331ef3b555d8605">LA 3. Semester</option>
+                    <option value="951794e7fa01de503eb76546dd08b953">LA 4. Semester</option>
+                    <option value="ab5db1eb6053f1c3300a5f5fc7a9b192">LA 5. Semester</option>
+                    <option value="6c33be4c674a80be64bca7d7bfe42dc0">LA 6. Semester</option>
+                    <option value="ddfe88e8d7abef5db488ec93a7086d97">LA 7. Semester</option>
+                    <option value="0d937d775816d989c535e0f532a82d1a">LPN 1. Semester</option>
+                    <option value="d9da70568e5e24236a4c9cdcb5487b08">LPN 2. Semester</option>
+                    <option value="57a08afb3011918206d7964fb32bdf50">LPN 3. Semester</option>
+                    <option value="5f662ba704342a814b6491aaecb6d264">LPN 4. Semester</option>
+                    <option value="e7ca0312184253021f3aea455c8a5bcf">LPN 5. Semester</option>
+                    <option value="c0366640d6969071c02cf8d022c70301">LPN 6. Semester</option>
+                    <option value="0cfdb037168a786da436093c618eccdf">LPN 7. Semester</option>
+                    <option value="5493ba881afa9753cd4512ee3e18070d">NPM 1. Semester</option>
+                    <option value="29af7a0a6971191fdbf0ff60ca4b2a77">NPM 2. Semester</option>
+                    <option value="bea338026da0b283917e792c9871587b">NPM 3. Semester</option>
+                    <option value="d2acb6cb337f7399d2728f627c91c726">NPM 4. Semester</option>
+                    <option value="069bd9629fb57d58e117eb77a6ee6a3a">NPM 5. Semester</option>
+                    <option value="a9920e21f6a311bd0c3ba1bc62633f5c">NPM 6./7. Semester</option>
+                    <option value="af11116958bf0189355c55c69c7b5b99">PW 1. Semester</option>
+                    <option value="36bfe0907b170604303ea77609c5a5b2">PW 2. Semester</option>
+                    <option value="129bd7e06f8c7bf4dd17c817dda9ddca">PW 3. Semester</option>
+                    <option value="870dcb391c237936b47c9cd922412ae1">PW 4. Semester</option>
+                    <option value="836c63e6151ce00348b4aa17351fd053">PW 5. Semester</option>
+                    <option value="953ea459c83be77a70409d38d98c13dc">PW 6. Semester</option>
+                    <option value="e6241780befb8a0fed1ac0414db2c76a">PW 7. Semester</option>
+                    <option value="f29fbe310446414e764dd83e16316bcd">PzM 1. Semester</option>
+                    <option value="04508e13843991cb204a69169bd896b8">PzM 2. Semester</option>
+                    <option value="bc3eb0bb772738bdf7465dd68093121e">PzM 3. Semester</option>
+                    <option value="239e44fd661cc0205e02cc30a83f12bc">PzM 4. Semester</option>
+                    <option value="9b23b9a7449737e532c2174fe833eda8">SP 1. Semester</option>
+                    <option value="435c30a6a55ffc2b69abcb3d5905e085">SP 2. Semester</option>
+                    <option value="cf947cb3348187b3f6ebadb8132c55a3">SP 3. Semester</option>
+                    <option value="eac5911fd5b0efc72f09b39957a77811">SP 4. Semester</option>
+                    <option value="af374eb2155fb7138059522685a39245">SP 5. Semester</option>
+                    <option value="e943d722890a56e6964c43b671f6bd54">SP 6. Semester</option>
+                    <option value="2aeba2dfdcc54dad1e5c46d11a28d338">SP 7. Semester</option>
+                    <option value="ae236ff2369dbba2bf61638caac342fd">UF 1. Semester</option>
+                    <option value="5561a253c8d2f89a4d260c5186c9b367">UF 2. Semester</option>
+                    <option value="5720c6b28f2f67bbcca8402a597d831c">UF 3. Semester</option>
+                    <option value="436b71e9a7bf2a2255a06abb6a51d842">URI 1. Semester</option>
+                    <option value="053b6b61731ffaca2801d1162bb5167b">URI 2. Semester</option>
+                    <option value="4f5f43dc209aac41edbe5d4170850b7d">URI 3. Semester</option>
+                    <option value="2b7dd716fa23ebd8764fc2b4e4e5ce3c">UW 1. Semester</option>
+                    <option value="0a7722c8ece442b604f30e0f874ed9b5">UW 2. Semester</option>
+                    <option value="3c7aa5809c8dd8670dafdbcdba6d0237">UW 2/3. Semester</option>
+                    <option value="7167c7c7c2089fb598340439f68c218c">UW 4. Semester</option>
+                    <option value="1a0726602c4780b0bcd6589cda8b153d">VWL 1. Semester</option>
+                    <option value="dde9bd5645b5af0de219a530e846216d">VWL 2. Semester</option>
+                    <option value="a1aa679ff46e761618035a48a8d5a9f8">VWL 3. Semester</option>
+                    <option value="d17258232c210316676b16694ebabd61">VWL 4. Semester</option>
+                    <option value="fc540dede25939d1e4e2aa49ca598ea8">VWL 5. Semester</option>
+                    <option value="f11cda62690b12ae6dde27583895312a">VWL 6. Semester</option>
+                    <option value="2aef8b4e203224dcfc5e03c7e4fa546f">VWL 7. Semester</option>
+                    <option value="c4f26900fc3e9a06330d4df0a469a9ea">WR 1. Semester</option>
+                    <option value="06106632cc70499e6cb8d57250bdcc73">WR 2. Semester</option>
+                    <option value="26d28986a4c67f8d18e6921652a3874e">WR 3. Semester</option>
+                    <option value="e7164b69fd6d1834b99cd6a15bbcf517">WR 4. Semester</option>
+                    <option value="240d2b4779324c57a334a8faee3c7a31">WR 5. Semester</option>
+                    <option value="67a71c9dcc7d829168914960a2e6bba0">WR 6. Semester</option>
+                    <option value="9508d2e8b2f52da1dc0e6307fa3f4eb5">WR 7. Semester</option>
+            </select></div>
+    <input id="edit_modul_neu_heimat_name" type=""><button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="edit_module_neu_erstellen"><span class="ui-button-text">Neues Modul Anlegen</span></button>
+
+
+
+
+</div>
+
+
+
+
+
+<div id="edit_sicherheitsabfrage_vl" class="notHere">
+    Sind Sie sicher das Sie die Vorlesung löschen wollen?
+<div><input id="edit_sicherheitsabfrage_vl_uid" type=""></div>
+</div>
+
+<div id="edit_sicherheitsabfrage_allevl" class="notHere">
+    Sind Sie sicher das Sie alle Vorlesung löschen wollen?
+</div>
+
+<div id="edit_sicherheitsabfrage_savevl" class="notHere">
+    Sind Sie sicher das Sie alle Vorlesung erstellen wollen?
+</div>
+
+<div id="upload_form">
+	<form action="upload" method="post" enctype="multipart/form-data" id="data_upload_form">
+		<input name="datei" value="Eine CSV-Datei" id="upload_file" type="file">
+		<input value="Hochladen" id="upload_button" type="submit">
+	</form>
+</div>
+
+<div id="copy_semester_form" class="notHere">
+	 <form action="copysemester" method="post">
+		 Bitte wählen Sie das Semester sowie den Studiengang aus: <br>
+		 Semester:<br>
+		 <select name="copy_sem" size="1" id="sem">
+							<option selected="selected" value="47d1db591568a7480813c46d10cad48a">WS 2011/2012</option>
+							<option value="fcded28bde1a32b34219ebd23b945286">SS2011</option>
+							<option value="c582a513f6fbc5d1d35a85cb5a710f5d">SS2012</option>
+							<option value="d4155946deba60700f20daf3209264cf">WS2012/2013</option>
+							<option value="0d75333f4de566b675566e0d503d7639">SS2013</option>
+							<option value="9b2f1a20f82f7c9ae62e6b60cd73623d">WS2013/2014</option>
+			
+		 </select> <br>
+		 Studiengang:<br>
+		 <select name="copy_stg" size="1" id="stg">
+			 			 	<option selected="selected" value="548b3e8fcf73b3aebd75421f2447c557">AAT 1. Semester</option>
+			 			 	<option value="464ccc15f5a91b8273e1ff0ac9737630">AAT 2. Semester</option>
+			 			 	<option value="4ed66c2680e87d6880ecf9a87a2b4906">AAT 3. Semester</option>
+			 			 	<option value="4ec2bbacad6311ca68de5476fd93c21b">AUM 1. Semester</option>
+			 			 	<option value="7dda96a2eb4b5517e0892cca0ee78941">AUM 2. Semester</option>
+			 			 	<option value="ec63f307814a8319f3905f550e0fc2c9">AUM 3. Semester</option>
+			 			 	<option value="4d363bdf436c0e3fadca22517731ae36">AUW 1. Semester</option>
+			 			 	<option value="1ddcb88a8b5df36d0abf7166010a561c">AUW 2. Semester</option>
+			 			 	<option value="8f2dd467f76c59efe505847a78ef00da">AUW 3. Semester</option>
+			 			 	<option value="78c1d8fcdb3ebb237cd0f35edadfb164">AUW 4. Semester</option>
+			 			 	<option value="1b14a13f341144e0f09131743b7ce5ce">AUW 5. Semester</option>
+			 			 	<option value="c69984283752fd655d319babb4fe05c8">AUW 6./7. Semester</option>
+			 			 	<option value="908e17246ce625532269165add9b1b54">AW 1. Semester</option>
+			 			 	<option value="2d887777773ea3bb42f8ead88b4d4f93">AW 2. Semester</option>
+			 			 	<option value="391268c89ed1dcfa0c389c68097ff316">AW 3. Semester</option>
+			 			 	<option value="913d788bd6c01d9ab0e937e191c7ae97">AW 4. Semester</option>
+			 			 	<option value="95368137632d3ce163b0c3fbdf59ad47">AW 5.  Semester</option>
+			 			 	<option value="eb2043a0789d5cc5eeda1fa05bfadf89">AW 6. Semester</option>
+			 			 	<option value="2e69669edefb71a8fc0f43cb6e02ef5f">AW 7.  Semester</option>
+			 			 	<option value="9ce78aec995002a8d3aa96d48c4fec20">BW 1. Semester</option>
+			 			 	<option value="85b4012b821b652bc0580fd41f658181">BW 2. Semester</option>
+			 			 	<option value="aa48a20d718d1c37d06cd7a1f9800556">BW 3. Semester</option>
+			 			 	<option value="688aaabb5daf53e6d4c3f560c32b079b">BW 4. Semester</option>
+			 			 	<option value="f038d75c78ad0a21a3bdbbc19476b90f">BW 5. Semester</option>
+			 			 	<option value="5f9d3871c003ba6c64e83619b8df03a4">BW 6./7. Semester</option>
+			 			 	<option value="38d411664a5c04000d2ed540604cf137">ERM 1. Semester</option>
+			 			 	<option value="f4999fde1f73795509c7bcf8e1af837b">ERM 2. Semester</option>
+			 			 	<option value="0451aadcaf2034f26aec67fd19474e99">ERM 3. Semester</option>
+			 			 	<option value="4b7e6a78d62449dc459d990a67a1a448">ERM 4. Semester</option>
+			 			 	<option value="81b89082e136e8b4426fd4ee308ec3c8">ERM 5. Semester</option>
+			 			 	<option value="98f5fd978ae80819d0e2afedd53d245d">ERM 6. Semester</option>
+			 			 	<option value="ad00be1175911b19e398d8877d6bcebf">ERM 6/7. Semester</option>
+			 			 	<option value="b67b2c8bb5f510e30ae5359496b9d2af">ERM 7. Semester</option>
+			 			 	<option value="af139b7b357edc186082c868ba5b36a7">GTM 1. Semester</option>
+			 			 	<option value="6f5b5aa2d4a6ce847397c47ab9888011">GTM 2. Semester</option>
+			 			 	<option value="27ab0b2ebaf034b664fd7ade88847430">GTM 3. Semester</option>
+			 			 	<option value="95e9cc364c10925c08cb7f1d015d3505">GTM 4. Semester</option>
+			 			 	<option value="5f8ba371d85fc6f1ace6d476e1f3bd30">GTM 5. Semester</option>
+			 			 	<option value="0f90ebec1cd76c4c20fd314336e38584">GTM 6. Semester</option>
+			 			 	<option value="f3b15ef985d649a76f4c25b551ac9eeb">GTM 7. Semester</option>
+			 			 	<option value="947b04af3eb3f9c1033600a7e101c341">IFB 1. Semester</option>
+			 			 	<option value="6f394ed7cfeaac0540fc6a5ce1144a37">IFB 2. Semester</option>
+			 			 	<option value="c2362f5b03ebc0bc711e983ca3983a9f">IFB 5. Semester</option>
+			 			 	<option value="64e450f0822a3bc43cb3676de4f14aa3">IFB 6. Semester</option>
+			 			 	<option value="04084c8b5c0df59821246029beeb8e1f">IFB 7. Semester</option>
+			 			 	<option value="2f70801cdbd9365c20270ce717fad5fd">IFM 1. Semester</option>
+			 			 	<option value="ed0128d574cd4bc1560215ea04c349eb">IFM 2. Semester</option>
+			 			 	<option value="0cfb5060f7ef3375f97891c3154a3a0c">IM 1. Semester</option>
+			 			 	<option value="d0a9976a14db8b6b7b64c3a2278f263b">IM 2. Semester</option>
+			 			 	<option value="8f17db27c5a003a3f83fa065c606528b">IM 3. Semester</option>
+			 			 	<option value="2f52083239ae4648f26dd8c18b539d5f">IMLA 1. Semester</option>
+			 			 	<option value="d479866c75ded3ba4f661f0a6cab1a87">IMMOB 1. Semester</option>
+			 			 	<option value="ae1dc9fb5c5238f008b22f2349d65f8c">IMMOB 2. Semester</option>
+			 			 	<option value="67bd87dd4d2adfc94017008feada3ee9">IMMOB 3. Semester</option>
+			 			 	<option value="430c6a533d350ea21b3514e819e46807">IMMOB 4. Semester</option>
+			 			 	<option value="82bf5d359d2d8bd676c8590a666448c1">IMMOB 5. Semester</option>
+			 			 	<option value="d515f8eb53a59e6c36c794b195475b7d">IMMOB 6. Semester</option>
+			 			 	<option value="6f646f408c0cdee7c6481cd1205fb1f1">IMMOB 7. Semester</option>
+			 			 	<option value="11fba57db4354d5184a62684a3d27097">IMMOM 1. Semester</option>
+			 			 	<option value="589b2fe14d39b99bb2e318818280f38c">IMMOM 2. Semester</option>
+			 			 	<option value="1716378bd78fcb00c4bcb9e759f601cc">IMMOM 3. Semester</option>
+			 			 	<option value="fa41a6506a8d81f0f54647e28a05c32e">LA 1. Semester</option>
+			 			 	<option value="0ebedc92d03e9c401128f1df3e737d00">LA 2. Semester</option>
+			 			 	<option value="d7b8969325b781446331ef3b555d8605">LA 3. Semester</option>
+			 			 	<option value="951794e7fa01de503eb76546dd08b953">LA 4. Semester</option>
+			 			 	<option value="ab5db1eb6053f1c3300a5f5fc7a9b192">LA 5. Semester</option>
+			 			 	<option value="6c33be4c674a80be64bca7d7bfe42dc0">LA 6. Semester</option>
+			 			 	<option value="ddfe88e8d7abef5db488ec93a7086d97">LA 7. Semester</option>
+			 			 	<option value="0d937d775816d989c535e0f532a82d1a">LPN 1. Semester</option>
+			 			 	<option value="d9da70568e5e24236a4c9cdcb5487b08">LPN 2. Semester</option>
+			 			 	<option value="57a08afb3011918206d7964fb32bdf50">LPN 3. Semester</option>
+			 			 	<option value="5f662ba704342a814b6491aaecb6d264">LPN 4. Semester</option>
+			 			 	<option value="e7ca0312184253021f3aea455c8a5bcf">LPN 5. Semester</option>
+			 			 	<option value="c0366640d6969071c02cf8d022c70301">LPN 6. Semester</option>
+			 			 	<option value="0cfdb037168a786da436093c618eccdf">LPN 7. Semester</option>
+			 			 	<option value="5493ba881afa9753cd4512ee3e18070d">NPM 1. Semester</option>
+			 			 	<option value="29af7a0a6971191fdbf0ff60ca4b2a77">NPM 2. Semester</option>
+			 			 	<option value="bea338026da0b283917e792c9871587b">NPM 3. Semester</option>
+			 			 	<option value="d2acb6cb337f7399d2728f627c91c726">NPM 4. Semester</option>
+			 			 	<option value="069bd9629fb57d58e117eb77a6ee6a3a">NPM 5. Semester</option>
+			 			 	<option value="a9920e21f6a311bd0c3ba1bc62633f5c">NPM 6./7. Semester</option>
+			 			 	<option value="af11116958bf0189355c55c69c7b5b99">PW 1. Semester</option>
+			 			 	<option value="36bfe0907b170604303ea77609c5a5b2">PW 2. Semester</option>
+			 			 	<option value="129bd7e06f8c7bf4dd17c817dda9ddca">PW 3. Semester</option>
+			 			 	<option value="870dcb391c237936b47c9cd922412ae1">PW 4. Semester</option>
+			 			 	<option value="836c63e6151ce00348b4aa17351fd053">PW 5. Semester</option>
+			 			 	<option value="953ea459c83be77a70409d38d98c13dc">PW 6. Semester</option>
+			 			 	<option value="e6241780befb8a0fed1ac0414db2c76a">PW 7. Semester</option>
+			 			 	<option value="f29fbe310446414e764dd83e16316bcd">PzM 1. Semester</option>
+			 			 	<option value="04508e13843991cb204a69169bd896b8">PzM 2. Semester</option>
+			 			 	<option value="bc3eb0bb772738bdf7465dd68093121e">PzM 3. Semester</option>
+			 			 	<option value="239e44fd661cc0205e02cc30a83f12bc">PzM 4. Semester</option>
+			 			 	<option value="9b23b9a7449737e532c2174fe833eda8">SP 1. Semester</option>
+			 			 	<option value="435c30a6a55ffc2b69abcb3d5905e085">SP 2. Semester</option>
+			 			 	<option value="cf947cb3348187b3f6ebadb8132c55a3">SP 3. Semester</option>
+			 			 	<option value="eac5911fd5b0efc72f09b39957a77811">SP 4. Semester</option>
+			 			 	<option value="af374eb2155fb7138059522685a39245">SP 5. Semester</option>
+			 			 	<option value="e943d722890a56e6964c43b671f6bd54">SP 6. Semester</option>
+			 			 	<option value="2aeba2dfdcc54dad1e5c46d11a28d338">SP 7. Semester</option>
+			 			 	<option value="ae236ff2369dbba2bf61638caac342fd">UF 1. Semester</option>
+			 			 	<option value="5561a253c8d2f89a4d260c5186c9b367">UF 2. Semester</option>
+			 			 	<option value="5720c6b28f2f67bbcca8402a597d831c">UF 3. Semester</option>
+			 			 	<option value="436b71e9a7bf2a2255a06abb6a51d842">URI 1. Semester</option>
+			 			 	<option value="053b6b61731ffaca2801d1162bb5167b">URI 2. Semester</option>
+			 			 	<option value="4f5f43dc209aac41edbe5d4170850b7d">URI 3. Semester</option>
+			 			 	<option value="2b7dd716fa23ebd8764fc2b4e4e5ce3c">UW 1. Semester</option>
+			 			 	<option value="0a7722c8ece442b604f30e0f874ed9b5">UW 2. Semester</option>
+			 			 	<option value="3c7aa5809c8dd8670dafdbcdba6d0237">UW 2/3. Semester</option>
+			 			 	<option value="7167c7c7c2089fb598340439f68c218c">UW 4. Semester</option>
+			 			 	<option value="1a0726602c4780b0bcd6589cda8b153d">VWL 1. Semester</option>
+			 			 	<option value="dde9bd5645b5af0de219a530e846216d">VWL 2. Semester</option>
+			 			 	<option value="a1aa679ff46e761618035a48a8d5a9f8">VWL 3. Semester</option>
+			 			 	<option value="d17258232c210316676b16694ebabd61">VWL 4. Semester</option>
+			 			 	<option value="fc540dede25939d1e4e2aa49ca598ea8">VWL 5. Semester</option>
+			 			 	<option value="f11cda62690b12ae6dde27583895312a">VWL 6. Semester</option>
+			 			 	<option value="2aef8b4e203224dcfc5e03c7e4fa546f">VWL 7. Semester</option>
+			 			 	<option value="c4f26900fc3e9a06330d4df0a469a9ea">WR 1. Semester</option>
+			 			 	<option value="06106632cc70499e6cb8d57250bdcc73">WR 2. Semester</option>
+			 			 	<option value="26d28986a4c67f8d18e6921652a3874e">WR 3. Semester</option>
+			 			 	<option value="e7164b69fd6d1834b99cd6a15bbcf517">WR 4. Semester</option>
+			 			 	<option value="240d2b4779324c57a334a8faee3c7a31">WR 5. Semester</option>
+			 			 	<option value="67a71c9dcc7d829168914960a2e6bba0">WR 6. Semester</option>
+			 			 	<option value="9508d2e8b2f52da1dc0e6307fa3f4eb5">WR 7. Semester</option>
+			 		 </select>
+
+		 <button type="submit" id="sem_copy_button">Semester kopieren</button>
+	 </form>
+</div>
+
+
+        <div class="clear"></div>
+    </div>
+</div>
+<!-- Ende Page -->
+    <div id="layout_push"></div>
+</div>
+
+        <!-- Beginn Footer -->
+    <div id="layout_footer">
+        <ul>
+                                            <li>
+                <a href="http://docs.studip.de/help/2.3/de/Basis.Allgemeines" target="_blank">Hilfe</a>
+                </li>
+                                                <li>
+                <a href="http://localhost/neo/dispatch.php/sitemap/">Sitemap</a>
+                </li>
+                                                <li>
+                <a href="http://www.studip.de/" target="_blank">Stud.IP</a>
+                </li>
+                                                <li>
+                <a href="http://blog.studip.de/" target="_blank">Blog</a>
+                </li>
+                                                <li>
+                <a href="http://localhost/neo/dispatch.php/siteinfo/show">Impressum</a>
+                </li>
+                                    </ul>
+    </div>
+    <!-- Ende Footer -->
+
+    
+
+
+</div><ul style="z-index: 1; top: 0px; left: 0px; display: none;" aria-activedescendant="ui-active-menuitem" role="listbox" class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all"></ul><ul style="z-index: 1; top: 0px; left: 0px; display: none;" aria-activedescendant="ui-active-menuitem" role="listbox" class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all"></ul></body></html>
