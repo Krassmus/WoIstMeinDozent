@@ -4,3 +4,4 @@ origin=neo
 version=2.4.3
 description=Damit kann man schauen welche Termine ein Dozent in einer bestimmten Woche hat
 studipMinVersion=3.1
+studipMaxVersion=3.5.99
