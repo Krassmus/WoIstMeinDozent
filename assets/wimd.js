@@ -14,15 +14,16 @@ function showdetails(id) {
       url: "./ajax/renderDetails",
       data: { cmd: "renderDetails", id: id }
     }).done(function(data) {
-            $('#neo_termin_details').html(data)
+            $('#neo_termin_details').html(data);
     });
 
 
 $('#neo_termin_details').dialog({
-               show: "slide",
-               hide: "slide",
+               show: false,
+               hide: false,
                modal: true,
                minWidth: 800,
+               title: 'Details zum Termin',
                buttons: {
                    'Ok': function() {
                        $(this).dialog("close");

@@ -1,39 +1,16 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-require_once 'vendor/trails/trails.php';
-/**
- * Description of woistmeindozent
- *
- * @author johannesstichler
- */
 class woistmeindozent extends StudipPlugin implements SystemPlugin {
-     
-    public function __construct()
-    { 
-        parent::__construct();       
-        
-        $navigation = new Navigation('Wo ist mein Dozent');
+
+    public function __construct() {
+        parent::__construct();
+        $nav_title = "Wo ist mein Dozent?";
+        $nav = new Navigation($nav_title, PluginEngine::getURL($this, array(), "start"));
+        Navigation::addItem("/search/woistmeindozent", $nav);
+
+        $navigation = new Navigation($nav_title);
         $navigation->setURL(PluginEngine::getURL('woistmeindozent/start'));
-        Navigation::addItem('/start/'.get_class($this), $navigation);
-         unset($GLOBALS["plugin_pfad"]);
-        $GLOBALS["wimd_pfad"] = $this->getPluginPath().'/assets/';//        $GLOBALS["plugin_pfad"] = ;
+        Navigation::addItem('/start/' . get_class($this), $navigation);
     }
-    
-     /**
-     * This method dispatches all actions.
-     *
-     * @param string   part of the dispatch path that was not consumed
-     */
-    public function perform($unconsumed_path)
-    {
-        $trails_root = $this->getPluginPath();
-        $dispatcher = new Trails_Dispatcher($trails_root, NULL, NULL);
-        $dispatcher->dispatch($unconsumed_path);
-    }
+
 }
-    
-?>
